@@ -4,21 +4,33 @@
 public class LongestSubstringWithoutRepeatingCharacters {
 
     public static int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0){
+        // If string is null or string length is 0, return 0
+        if (s == null || s.length() == 0) {
             return 0;
         }
+        // Create i to store the start index, j to store the end index (also the moving pointer), max to store the max length
         int i = 0, j = 0, max = -1;
+
+        // Create a StringBuilder to store the non-repeating string
         StringBuilder sb = new StringBuilder();
-        while (j < s.length()){
+        // While j is less than the length of the string
+        while (j < s.length()) {
+            // Get the index of the current character at j in the StringBuilder
             int index = sb.indexOf(Character.toString(s.charAt(j)));
-            if (index >= 0){
-                sb.delete(0,index + 1);
+            // If this character is in the StringBuilder
+            if (index >= 0) {
+                // Remove everything before that character, including the character itself
+                sb.delete(0, index + 1);
+                // Move pointer i to the new start of the non-repeating string
                 i += (index + 1);
             }
+            // Append this character to the StringBuilder
             sb.append(s.charAt(j));
-            if (j - i + 1 > max){
+            // Update the max value if the new length of the string is greater than the current max
+            if (j - i + 1 > max) {
                 max = j - i + 1;
             }
+            // Move j pointer forward
             j++;
         }
         return max;

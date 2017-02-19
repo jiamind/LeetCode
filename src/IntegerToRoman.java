@@ -1,5 +1,3 @@
-package test;
-
 /**
  * Created by udingji on 2/4/17.
  */
@@ -58,6 +56,18 @@ public class IntegerToRoman {
         }
 
         return sb.toString();
+    }
+
+    public static String intToRoman2(int num) {
+        // M = 1000
+        String M[] = {"", "M", "MM", "MMM"};
+        // C = 100, D = 500
+        String C[] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        // X = 10, L = 50
+        String X[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        // I = 1, V = 5
+        String I[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
     }
 
     public static void main(String[] args) {

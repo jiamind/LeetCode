@@ -8,16 +8,25 @@ public class ZigzagConversion {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < numRows; i++){
             int cursor = i;
+            // Append the first character of that row
             sb.append(s.charAt(cursor));
             while (cursor < s.length()) {
+                // Skip this if it is the last row
                 if (i != numRows - 1) {
+                    // Move the cursor forward twice the distance to the last row
                     cursor += (numRows - 1 - i) * 2;
+                    // Continue if the cursor is out of range
                     if (cursor >= s.length()) continue;
+                    // Append that character
                     sb.append(s.charAt(cursor));
                 }
+                // Skip this if it is the first row
                 if (i != 0) {
+                    // Move the cursor forward twice the distance to the first row
                     cursor += i * 2;
+                    // Continue if the cursor is out of range
                     if (cursor >= s.length()) continue;
+                    // Append this character
                     sb.append(s.charAt(cursor));
                 }
             }

@@ -7,18 +7,7 @@ public class ThreeSum {
 
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-//        Arrays.sort(nums);
-//        int j = 0, i = 1;
-//        while (i < nums.length){
-//            if (nums[i] == nums[j]){
-//                i++;
-//            }else {
-//                j++;
-//                nums[j] = nums[i];
-//                i++;
-//            }
-//        }
-//        nums = Arrays.copyOf(nums,j+1);
+
         if (nums.length < 3) return result;
         if (nums.length == 3){
             if(nums[0] + nums[1] + nums[2] == 0) {
