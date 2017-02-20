@@ -1,5 +1,3 @@
-package test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -10,7 +8,7 @@ import java.util.List;
  */
 public class GenerateParentheses {
 
-
+// Idea: Use recursive to insert '()' at the begining of string and after each '('
 //    public static List<String> generateParentheses(int n) {
 //        if (n < 1) return new ArrayList<>();
 //        return recurGenerateParentheses(n);
@@ -47,13 +45,16 @@ public class GenerateParentheses {
 
     public static void backtrack(List<String> list, String str, int open, int close, int max){
 
+        // If the length of the result is equal to twice the number of parentheses. Generate process is finished.
         if(str.length() == max*2){
             list.add(str);
             return;
         }
 
+        // If the number of left bracket is less than max, increment the left counter and recursive call
         if(open < max)
             backtrack(list, str+"(", open+1, close, max);
+        // Each time after we add a '(',  we add another ')' and increment the right counter
         if(close < open)
             backtrack(list, str+")", open, close+1, max);
     }

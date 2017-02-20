@@ -17,6 +17,7 @@ public class MergeKSortedList {
         }
     }
 
+    // Idea: Recursive call to divide lists in to small single list node and merge each of the two together
     public static ListNode mergeKLists(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
         if (lists.length == 1) return lists[0];

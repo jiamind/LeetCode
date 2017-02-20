@@ -1,5 +1,3 @@
-package test;
-
 /**
  * Created by udingji on 2/9/17.
  */
@@ -56,7 +54,17 @@ public class SwapNodesInPairs {
         return result;
     }
 
-    public static void main(String[] args) {
+    public static ListNode swapPairs2(ListNode head) {
+        if (head == null || head.next == null){
+            return head;
+        }
+        ListNode n = head.next;
+        head.next = swapPairs2(head.next.next);
+        n.next = head;
+        return n;
+    }
+
+        public static void main(String[] args) {
         ListNode n1 = new ListNode(1);
         ListNode n2 = new ListNode(2);
         ListNode n3 = new ListNode(3);

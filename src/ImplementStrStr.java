@@ -9,6 +9,7 @@ public class ImplementStrStr {
 
 //        if (haystack.isEmpty() && needle.isEmpty()) return 0;
 
+        // Iterate through the haystack
         for (int i = 0; i < haystack.length() - needle.length() + 1; i++){
             if (haystack.substring(i,i+needle.length()).equals(needle))
                 return i;

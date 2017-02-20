@@ -70,15 +70,23 @@ public class ReverseNodesInKGroup {
         }
 
         if (count == k){
+            // This returns the next new head after swap
             cursor = reverseKGroup(cursor, k);
+            // Decrement count, while it's greater than 0
             while (count -- > 0){
+                // Save the next of head as temp
                 ListNode temp = head.next;
+                // Make the next of head to the cursor
                 head.next = cursor;
+                // Point the cursor to the head we just moved
                 cursor = head;
+                // Point the head to the next list node to be swapped
                 head = temp;
             }
+            // Set the head to the cursor (the last list node we moved, is the new head)
             head = cursor;
         }
+        // Return the new head
         return  head;
     }
 

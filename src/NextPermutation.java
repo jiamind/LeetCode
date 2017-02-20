@@ -1,5 +1,3 @@
-package test;
-
 /**
  * Created by udingji on 2/15/17.
  */
@@ -9,6 +7,9 @@ public class NextPermutation {
 
         if (nums == null || nums.length < 2) return;
 
+        // Scan from the right to the left, find the first element that is less than its previous value
+        // 4 5 6 7 2 1
+        //   p
         int p = 0;
         for (int i = nums.length - 2; i >= 0; i--){
             if (nums[i] < nums[i+1]){
@@ -17,6 +18,9 @@ public class NextPermutation {
             }
         }
 
+        // Scan from right to left, find the first element that is greater than p
+        // 4 5 6 7 2 1
+        //     q
         int q = 0;
         for (int i = nums.length - 1; i > p; i--){
             if (nums[i] > nums[p]){
@@ -25,6 +29,8 @@ public class NextPermutation {
             }
         }
 
+        // If it's the last permutation, reverse the whole list
+        // Otherwsie, swap p and q, reverse from p+1 to the end of the list
         if (p == 0 && q == 0) {
             reverse(nums, 0, nums.length - 1);
         }else {

@@ -1,10 +1,9 @@
-package test;
-
 /**
  * Created by udingji on 2/16/17.
  */
 public class SearchForARange {
 
+    // Idea: find the first numbers that greater or equal to target and target + 1
     public static int[] searchRange(int[] nums, int target) {
         if (nums == null || nums.length == 0) return new int[]{-1,-1};
         if (nums.length == 1 && nums[0] == target) return new int[]{0,0};
@@ -20,9 +19,11 @@ public class SearchForARange {
 
         while (left < right){
             int mid = (left + right) / 2;
+            // If the target is greater than the number at mid, bring up the left pointer to mid + 1
             if (target > nums[mid]){
                 left = mid + 1;
             }else {
+                // The target os less than or equal to the number at mid, bring down the right pointer to mids
                 right = mid;
             }
         }

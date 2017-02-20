@@ -1,4 +1,3 @@
-package test;
 
 /**
  * Created by udingji on 2/16/17.
@@ -6,6 +5,7 @@ package test;
 public class SearchInsertPosition {
 
 
+    // Idea: Search for the number that is greater or equal to the target
     public static int searchInsert(int[] nums, int target) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1){
