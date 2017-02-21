@@ -1,9 +1,7 @@
-package test;
-
 /**
  * Created by udingji on 2/16/17.
  */
-public class SodukuSolver {
+public class SodokuSolver {
 
     public void solveSudoku(char[][] board) {
         if (board == null || board.length < 9) return;
@@ -14,9 +12,12 @@ public class SodukuSolver {
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
                 if (board[i][j] == '.') {
+                    // Check for each individual cell. Try with numbers between 1 to 9
                     for (char c = '1'; c <= '9'; c++) {
                         if (isValid(board,i,j,c)){
                             board[i][j] = c;
+                            // If this leads to a successful solution, return true
+                            // Otherwise, take back and put '.' into the current cell
                             if (solve(board)){
                                 return true;
                             }else {

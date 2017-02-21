@@ -1,5 +1,3 @@
-package test;
-
 import java.util.HashSet;
 
 /**
@@ -17,11 +15,13 @@ public class ValidSudoku {
                 // Check row
                 if (board[r][c] != '.' && !row.add(board[r][c]))
                     return false;
+                // Check column
                 if (board[c][r] != '.' && !column.add(board[c][r]))
                     return false;
 
                 int rowIndex = 3 * (r/3);
                 int columnIndex = 3 * (r%3);
+                // Check square
                 if (board[rowIndex + c/3][columnIndex + c%3] != '.' && !square.add(board[rowIndex + c/3][columnIndex + c%3]))
                     return false;
 

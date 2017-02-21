@@ -1,4 +1,3 @@
-package test;
 
 
 /**
@@ -14,7 +13,9 @@ public class CountAndSay {
 
     private static String sayNum(String n){
         StringBuilder sb = new StringBuilder();
+        // The new character
         Character temp = null;
+        // The starting index of the new character
         int count = 0;
         for (int i = 0; i < n.length(); i++){
             char c = n.charAt(i);
