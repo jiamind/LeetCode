@@ -30,6 +30,14 @@ public class PowXN {
         if (n == 0){
             return 1;
         }
+        // If n is the min integer value, -n will be out of bound
+        // Instead, we increment n and treat it as an even number
+        if (n == Integer.MIN_VALUE){
+            n++;
+            x = 1/x;
+            n = -n;
+            return myPow(x*x, n/2);
+        }
         // If n is negative, set x = 1/x and n = -n
         if (n < 0){
             x = 1/x;
