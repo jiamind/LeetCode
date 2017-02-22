@@ -25,6 +25,7 @@ public class SodokuSolver {
                             }
                         }
                     }
+                    // If none of 1-9 can be wrote here and solve the sodoku, it failed
                     return false;
                 }
             }
