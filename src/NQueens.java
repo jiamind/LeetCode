@@ -129,8 +129,11 @@ public class NQueens {
     }
 
     public static boolean isValid(char[][] array, int n, int r, int c){
+        // For each column
         for (int j = 0; j < n; j++){
+            // For each row until r, since rows below r are not touch yet.
             for (int i = 0; i < r; i++){
+                // If any cell has 'Q', and the row distance and column distance are the same, or they are on the same column
                 if (array[i][j] == 'Q' && (Math.abs(i-r) == Math.abs(j-c)||c==j))
                     return false;
             }
