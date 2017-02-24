@@ -25,16 +25,24 @@ public class MergeIntervals {
     public static List<Interval> merge(List<Interval> intervals) {
 
         List<Interval> result = new ArrayList<>();
+        // If the intervals is null or the size of the intervals is 1, return the intervals
         if (intervals == null || intervals.size() <= 1) return intervals;
 
+        // Sort intervals base on start value (quick sort, O(nlogn)
         intervals.sort((interval1,interval2) -> Integer.compare(interval1.start, interval2.start));
 
+        // The start and end of the first interval
         int start = intervals.get(0).start;
         int end = intervals.get(0).end;
+        // Iterate through the intervals
         for (Interval i : intervals){
+            // If the previous end is greater than the current start, there is a overlap
             if(end >= i.start){
+                // The end will be the max end, start is the previous start since previous start is smaller
                 end = Math.max(end, i.end);
             }else{
+                // The two intervals don't overlap, add the previous one to the result list.
+                // Set the current start and end as the new start and end to compare with the next interval
                 result.add(new Interval(start,end));
                 start = i.start;
                 end = i.end;
