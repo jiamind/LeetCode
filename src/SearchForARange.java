@@ -20,6 +20,8 @@ public class SearchForARange {
         while (left < right){
             int mid = (left + right) / 2;
             // If the target is greater than the number at mid, bring up the left pointer to mid + 1
+            // Attention: mid can be lower than actual number since it's integer type.
+            // We can't set left = mid if we want to bring up the lower bar
             if (target > nums[mid]){
                 left = mid + 1;
             }else {
@@ -27,7 +29,7 @@ public class SearchForARange {
                 right = mid;
             }
         }
-
+        // Left will be equal or greater than the number, since left = mid + 1
         return left;
     }
 
