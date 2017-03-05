@@ -17,6 +17,7 @@ public class BinaryTreeInorderTraversal {
         }
     }
 
+    // Iterative version
     public static List<Integer> inorderTraversal(TreeNode root) {
 
         // Create a list to store the result
@@ -44,5 +45,25 @@ public class BinaryTreeInorderTraversal {
         }
 
         return result;
+    }
+
+    // Recursive version
+    public static List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        recurInorderTraversal(root,result);
+        return result;
+    }
+
+    private static void recurInorderTraversal(TreeNode treeNode, List<Integer> list){
+        // If the current tree node is null, we reach the end, return
+        if (treeNode == null) return;
+        // Call this method with left node
+        recurInorderTraversal(treeNode.left,list);
+        // If the current node has a left node, the left node will be first added in the recursive call above
+        // Then the current tree node is added
+        list.add(treeNode.val);
+        // Call this method with right node
+        // If the current node has a right node, the right node will be added in this recursive call
+        recurInorderTraversal(treeNode.right,list);
     }
 }
