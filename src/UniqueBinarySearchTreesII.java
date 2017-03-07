@@ -6,7 +6,7 @@ import java.util.List;
  */
 public class UniqueBinarySearchTreesII {
 
-    public static class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
