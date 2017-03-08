@@ -10,19 +10,27 @@ public class GameOfLife {
         // 2: currently dead, next stage is live
         // 3: currently live, next stage is dead
 
+        // Get number of rows and columns in the board
         int row = board.length;
         int column = board[0].length;
 
+        // Iterate through each cell in the board
         for (int r = 0; r < row; r++){
             for (int c = 0; c < column; c++){
+                // Check number of neighbors that are live
                 int num = numOfNeighbors(board,r,c,row,column);
+                // If the cell is currently live
                 if (board[r][c] == 1){
+                    // If the number of neighbors that are live is less than 2 or greater than 3, mark it as dead for the next state
                     if (num < 2 || num > 3) board[r][c] = 3;
                 }else {
+                    // If the cell is currently dead
+                    // If the number of enighbors that are live is equal to 3, mark it as live for the next state
                     if (num == 3) board[r][c] = 2;
                 }
             }
         }
+        // Iterate through the board, change any 2 to 1, 3 to 0
         for (int r = 0; r < row; r++){
             for (int c = 0; c < column; c++) {
                 if (board[r][c] == 2) board[r][c] = 1;
