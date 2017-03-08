@@ -8,6 +8,7 @@ public class TextJustification {
 
     public static List<String> fullJustify(String[] words, int maxWidth) {
 
+        // TODO: needs comments
         List<String> result = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         int start = 0;

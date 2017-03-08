@@ -11,7 +11,6 @@ public class CombinationSum {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         if (candidates == null || candidates.length == 0) return result;
-//        Arrays.sort(candidates);
         backtrack(result,new ArrayList<>(),candidates,target,0);
         return result;
     }
@@ -37,12 +36,19 @@ public class CombinationSum {
     }
 
     private static void backtrack2(List<List<Integer>> list, List<Integer> tempList, int [] nums, int remain, int start){
+        // If the distance to the target is less than 0, we exceeds the target. Return.
         if(remain < 0) return;
+        // If the distance to the target is 0, means we reach the target. Add the temp list to the result list.
         else if(remain == 0) list.add(new ArrayList<>(tempList));
+        // If there is still distance to the target
         else{
+            // Iterate through the numbers starting from the current position to the end
             for(int i = start; i < nums.length; i++){
+                // Add the number to the temp list
                 tempList.add(nums[i]);
+                // Call backtrack method. Update the remain distance
                 backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+                // Remove the number we just added
                 tempList.remove(tempList.size() - 1);
             }
         }
