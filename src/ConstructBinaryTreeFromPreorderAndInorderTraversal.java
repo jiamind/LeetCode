@@ -13,7 +13,8 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         }
     }
 
-    // Idea: treat each element in the preorder list as the root. Find the index of that element in the inorder list.
+    // Idea: treat each element in the preorder list as the root (The first element in the preorder list is the root).
+    // Find the index of that element in the inorder list.
     // Then everything before that index in the inorder list is the left subtree, everything after that index is the right subtree
     // Recursively build the tree
 
