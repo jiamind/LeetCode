@@ -16,13 +16,12 @@ public class MaximumDepthOfBinaryTree {
         }
     }
 
-    // Use depth first search
     public static int maxDepth(TreeNode root) {
 
         int maxDepth = 0;
         // If the root is null, the depth is 0
         if (root == null) return maxDepth;
-        // Create a stack for DFS
+        // Create a stack to store nodes
         Stack<TreeNode> stack = new Stack<>();
         // Create a stack to store depth for each node in the stack
         Stack<Integer> depth = new Stack<>();
