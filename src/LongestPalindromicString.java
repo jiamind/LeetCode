@@ -11,7 +11,7 @@ public class LongestPalindromicString {
         int maxLen = -1;
         // The start index of the palindrome string
         int start = -1;
-        // The end inxdex of the palindrome string
+        // The end index of the palindrome string
         int end = -1;
         // Iterate through the string
         for (int i = 0; i < s.length(); i++){
