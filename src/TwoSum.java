@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Hashtable;
 
 /**
@@ -5,20 +6,25 @@ import java.util.Hashtable;
  */
 public class TwoSum {
 
+    // Idea: Store the complement (target - number) and the index of each number in a hashmap
+    // For each later numbers, if the number is in the hashmap as a complement,
+    // we found the pair of numbers that sum up to the target
     public static int[] twoSum(int[] nums, int target) {
-        Hashtable hashtable = new Hashtable<Integer, Integer>();
-        // For each number in the list
+        // Create the hashmap to store the complement and the index of each number
+        HashMap hashMap = new HashMap();
+        // Iterate through each number in the list
         for (int i = 0; i < nums.length; i++) {
             // Get the number at index i
             int num = nums[i];
             // If any previous number needs this number as a complement
-            if (hashtable.containsKey(num)) {
+            // We found the pair
+            if (hashMap.containsKey(num)) {
                 // Sort base on index and then return
-                return (Integer) hashtable.get(num) > i ? new int[]{i, (Integer) hashtable.get(num)} : new int[]{(Integer) hashtable.get(num), i};
+                return (Integer) hashMap.get(num) > i ? new int[]{i, (Integer) hashMap.get(num)} : new int[]{(Integer) hashMap.get(num), i};
             }
-            // Put the complement of this number into the hashtable
-            if (!hashtable.containsKey(target - num)) {
-                hashtable.put(target - num, i);
+            // Otherwise, put the complement of this number and its index into the hashmap
+            if (!hashMap.containsKey(target - num)) {
+                hashMap.put(target - num, i);
             }
         }
         return null;

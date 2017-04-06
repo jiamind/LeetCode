@@ -1,8 +1,13 @@
+import java.util.HashMap;
+
 /**
  * Created by jmding on 1/24/17.
  */
 public class LongestSubstringWithoutRepeatingCharacters {
 
+    // Idea: Use a hashmap to store each character and its index. Use two pointers point to the start and end of the longest substring
+    // Iterate through each character in the string. If we find a character which already in the hashmap, we update the start pointer to the right of the current character
+    // Update the max length using the distance between the start and end pointer
     public static int lengthOfLongestSubstring(String s) {
         // If string is null or string length is 0, return 0
         if (s == null || s.length() == 0) {
@@ -10,28 +15,22 @@ public class LongestSubstringWithoutRepeatingCharacters {
         }
         // Create i to store the start index, j to store the end index (also the moving pointer), max to store the max length
         int i = 0, j = 0, max = -1;
+        // Convert the string to character array
+        char[] array = s.toCharArray();
 
-        // Create a StringBuilder to store the non-repeating string
-        StringBuilder sb = new StringBuilder();
-        // While j is less than the length of the string
-        while (j < s.length()) {
-            // Get the index of the current character at j in the StringBuilder
-            int index = sb.indexOf(Character.toString(s.charAt(j)));
-            // If this character is in the StringBuilder
-            if (index >= 0) {
-                // Remove everything before that character, including the character itself
-                sb.delete(0, index + 1);
-                // Move pointer i to the new start of the non-repeating string
-                i += (index + 1);
+        // Create a hashmap to store each character and its index
+        HashMap<Character,Integer> hashMap = new HashMap<>();
+        // Iterate through each character in the string
+        for (;j < array.length; j++) {
+            // If the current character is already in the hashmap, update the start pointer points to the right of the current character
+            if (hashMap.containsKey(array[j])){
+                // Note: i cannot go backward (smaller).
+                i = Math.max(i,hashMap.get(array[j])+1);
             }
-            // Append this character to the StringBuilder
-            sb.append(s.charAt(j));
-            // Update the max value if the new length of the string is greater than the current max
-            if (j - i + 1 > max) {
-                max = j - i + 1;
-            }
-            // Move j pointer forward
-            j++;
+            // Put the current character and its index in the hashmap
+            hashMap.put(array[j],j);
+            // Update the max substring length
+            max = Math.max(max,j-i+1);
         }
         return max;
     }

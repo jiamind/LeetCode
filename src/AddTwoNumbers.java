@@ -13,9 +13,9 @@ public class AddTwoNumbers {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // Create result ListNode (also the head ListNode)
+        // Create result ListNode
         ListNode result = new ListNode(0);
-        // Create pointer p points to result ListNode
+        // Create pointer p points to the head of the result ListNode
         ListNode p = result;
 
         // While any of the ListNode is not null
@@ -30,7 +30,7 @@ public class AddTwoNumbers {
                 p.next = new ListNode(1);
             } else {
                 p.val += (a + b);
-                // If any of the ListNode is not null and has next, add 0 as the next p
+                // If any of the ListNode is not null and has next, create 0 as the next p
                 if ((l1 != null && l1.next != null) || (l2 != null && l2.next != null))
                     p.next = new ListNode(0);
             }
