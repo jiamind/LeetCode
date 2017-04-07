@@ -5,12 +5,18 @@ import java.util.*;
  */
 public class ThreeSum {
 
+    // Idea: Use three pointers, index, left and right.
+    // The index pointer iterate through the array (till the two elements before the end, since the last two elements are for the left and right pointer)
+    // The left pointer starts at the position to the right of index, right pointer starts at the end of the array
+    // For each combination of the three pointers, calculate the sum.
+    // If sum > 0, move the right pointer to the left while skip any duplicate numbers. If sum < 0, move the left pointer to the right while skip any duplicate numbers.
+    // If sum = 0, add the combination to the result list. Move the left and right pointer towards each other while skip any duplicates
     public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
 
         // If the length of nums is less than 3, return empty result
         if (nums.length < 3) return result;
-        // If the lenght of nums is 3, simply add them up to see if the sum equals 0
+        // If the length of nums is 3, simply add them up to see if the sum equals 0
         if (nums.length == 3){
             if(nums[0] + nums[1] + nums[2] == 0) {
                 List<Integer> list = new ArrayList<>();

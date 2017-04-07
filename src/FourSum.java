@@ -7,6 +7,9 @@ import java.util.List;
  */
 public class FourSum {
 
+    // Idea: Similar idea to ThreeSum. Use 4 pointers, i, j, left, and right pointers
+    // Use i pointer to iterate through the array, starting from the beginning of the array
+    // Also j pointer to iterate through the array, starting from the position to the right of i
     public static List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
         // Return an empty list if nums is null or the length of the nums is less than 4

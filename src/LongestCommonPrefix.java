@@ -5,6 +5,8 @@ import java.util.Arrays;
  */
 public class LongestCommonPrefix {
 
+    // Idea: Sort the array of strings base on length. Take the first and last string in the array
+    // Find the longest common prefix in these two strings
     public static String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) return "";
         if (strs.length == 1) return strs[0];

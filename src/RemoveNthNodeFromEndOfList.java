@@ -13,6 +13,7 @@ public class RemoveNthNodeFromEndOfList {
         }
     }
 
+    // Idea: use two pointers. One moves n step before the other, until one of them reaches the last node.
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         // Create two pointers point to the head
         ListNode p1 = head;
@@ -27,7 +28,7 @@ public class RemoveNthNodeFromEndOfList {
             // Remove head
             head = head.next;
         } else {
-            // Move p1 one more time, than move p1 and p2 at the same time until the next p1 is null.
+            // Move p1 one more time, then move p1 and p2 at the same time until the next p1 is null.
             p1 = p1.next;
             while (p1.next != null) {
                 p1 = p1.next;
