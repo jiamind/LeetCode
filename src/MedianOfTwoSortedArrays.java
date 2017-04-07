@@ -13,7 +13,7 @@ public class MedianOfTwoSortedArrays {
     // (2) B[j-1] <= A[i] and A[i-1] <= B[j]
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        // Swith nums1 and nums2 if the length of num1 is greater than the length of nums2.
+        // Switch nums1 and nums2 if the length of num1 is greater than the length of nums2.
         // Otherwise will throw error indexOutOfBound on nums2
         if (nums1.length > nums2.length) {
             int[] temp = nums1;

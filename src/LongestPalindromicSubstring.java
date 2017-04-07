@@ -1,7 +1,11 @@
 /**
  * Created by jmding on 1/26/17.
  */
-public class LongestPalindromicString {
+public class LongestPalindromicSubstring {
+
+    // Idea: For each character in the string, use two pointers to scan in opposite directions,
+    // while the characters that these pointers point to are identical. Note: need to consider if the length of the substring is odd and even
+    // Update the max length, the start and end index
     public static String longestPalindrome(String s) {
         // If the length of the string is less than 2, return the string itself
         if (s.length() < 2){

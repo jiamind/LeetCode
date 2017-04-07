@@ -16,6 +16,7 @@ public class ReverseInteger {
         }
         // While x is greater than 0
         while (x > 0) {
+            // Be careful that the reversed integer could be greater than the max integer
             // If the max value of integer minus the last digit of x, then divided by 10 is still less than the result so far,
             // return 0 since it is out of bound
             if ((Integer.MAX_VALUE - x % 10) / 10 < result){

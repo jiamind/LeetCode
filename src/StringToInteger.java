@@ -9,23 +9,24 @@ public class StringToInteger {
         if (str.trim().isEmpty()) return 0;
         int result = 0;
         boolean isNegative = false;
+        char[] array = str.toCharArray();
         // Pointer points to the start position of scanning
         int index = 0;
 
         // Remove any leading spaces
-        while (str.charAt(index) == ' ' && index < str.length())
+        while (array[index] == ' ' && index < str.length())
             index++;
 
         // Handle signs
-        if (str.charAt(index) == '+' || str.charAt(index) == '-'){
-            isNegative = str.charAt(index) == '-' ? true : false;
+        if (array[index] == '+' || array[index] == '-'){
+            isNegative = array[index] == '-' ? true : false;
             index++;
         }
 
         // Iterate through the string starting from index
-        for (int i = index; i < str.length(); i++) {
+        for (int i = index; i < array.length; i++) {
             // Get the numeric value of the current character
-            int value = Character.getNumericValue(str.charAt(i));
+            int value = Character.getNumericValue(array[i]);
             // If the character is not a valid digit
             if (value > 9 || value < 0){
                 // Return the result we have
