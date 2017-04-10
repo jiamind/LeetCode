@@ -13,7 +13,7 @@ public class GroupAnagrams {
         List<List<String>> result = new ArrayList<>();
         // Create a haspmap to store the string value of sorted character array key, and strings as the value
         HashMap<String,List<String>> map = new HashMap<>();
-        // Iterate throught the string list
+        // Iterate through the string list
         for (int i = 0 ; i < strs.length; i++){
             // Convert the string to character array
             char[] array = strs[i].toCharArray();
@@ -25,7 +25,7 @@ public class GroupAnagrams {
             map.put(String.valueOf(array),list);
         }
 
-        // For each value in the haspmap, add the list to the result
+        // For each value in the hashmap, add the list to the result
         for (List<String> list : map.values()){
             result.add(list);
         }
