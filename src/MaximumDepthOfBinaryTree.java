@@ -57,7 +57,7 @@ public class MaximumDepthOfBinaryTree {
     // Count from the every bottom of the tree (0), for each level up, add 1 to the maxmium count (left or right branch)
     public static int maxDepth2(TreeNode root) {
         if (root == null) return 0;
-        return 1+Math.max(maxDepth2(root.left),maxDepth2(root.left));
+        return 1+Math.max(maxDepth2(root.left),maxDepth2(root.right));
     }
 
     public static void main(String[] args) {
