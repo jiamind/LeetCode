@@ -30,7 +30,7 @@ public class NextPermutation {
         }
 
         // If it's the last permutation, reverse the whole list
-        // Otherwsie, swap p and q, reverse from p+1 to the end of the list
+        // Otherwise, swap p and q, reverse from p+1 to the end of the list
         if (p == 0 && q == 0) {
             reverse(nums, 0, nums.length - 1);
         }else {

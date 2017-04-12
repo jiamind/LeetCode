@@ -11,8 +11,8 @@ public class SearchInRotatedSortedArray {
 
         int left = 0, right = nums.length-1;
         while (left < right){
-            int mid = (left + right) / 2;
-            // If the number at left is less than the number at mid, it means mid is to the left of the pivot
+            int mid = left + (right - left) / 2;
+            // If the number at left is less than the number at mid, it means mid is to the left of the pivot, or it's the pivot
             if (nums[left] < nums[mid]){
                 if (target == nums[left]) return left;
                 if (target == nums[mid]) return mid;
