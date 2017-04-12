@@ -3,17 +3,15 @@ import java.util.*;
 /**
  * Created by jmding on 4/9/17.
  */
-public class PriorityQueue extends AbstractCollection
-{
-    private static class DefaultComparator implements Comparator
-    {
-        public int compare (Object o1, Object o2)
-        {
+public class PriorityQueue extends AbstractCollection {
+    private static class DefaultComparator implements Comparator {
+        public int compare(Object o1, Object o2) {
             return ((Comparable) o1).compareTo(o2);
         }
     }
+
     private Comparator myComp = new DefaultComparator();
-    private int        mySize;
+    private int mySize;
     private ArrayList myList;
 
     /**
@@ -21,26 +19,21 @@ public class PriorityQueue extends AbstractCollection
      * elements in the PriorityQueue ArrayList field
      * one-at-a-time
      */
-    private class PQItr implements Iterator
-    {
-        public Object next()
-        {
+    private class PQItr implements Iterator {
+        public Object next() {
             return myList.get(myCursor);
         }
 
-        public boolean hasNext()
-        {
+        public boolean hasNext() {
             return myCursor <= mySize;
         }
 
-        public void remove()
-        {
+        public void remove() {
             throw new UnsupportedOperationException("remove not implemented");
         }
 
         private int myCursor = 1;
     }
-
 
 
     /**
@@ -54,8 +47,7 @@ public class PriorityQueue extends AbstractCollection
      * and <code>e2</code> in the priority queue.
      */
 
-    public PriorityQueue()
-    {
+    public PriorityQueue() {
         myList = new ArrayList(32);
         myList.add(null);             // first slot has index 1
         mySize = 0;
@@ -69,8 +61,7 @@ public class PriorityQueue extends AbstractCollection
      * @param comp is the <code>Comparator</code> used in determining order
      */
 
-    public PriorityQueue(Comparator comp)
-    {
+    public PriorityQueue(Comparator comp) {
         this();
         myComp = comp;
     }
@@ -82,14 +73,12 @@ public class PriorityQueue extends AbstractCollection
      * @param coll is a collection of mutually comparable elements
      */
 
-    public PriorityQueue(Collection coll)
-    {
+    public PriorityQueue(Collection coll) {
         this();
         myList.addAll(coll);
         mySize = coll.size();
 
-        for(int k=coll.size()/2; k >= 1; k--)
-        {
+        for (int k = coll.size() / 2; k >= 1; k--) {
             heapify(k);
         }
     }
@@ -97,7 +86,7 @@ public class PriorityQueue extends AbstractCollection
     /**
      * A new element <code>o</code> is added to the priority queue
      * in O(log n) time where n is the size of the priority queue.
-     * <P>
+     * <p>
      * The return value should be ignored, a boolean value must be
      * returned because of the requirements of the
      * <code>Collection</code> interface.
@@ -106,18 +95,16 @@ public class PriorityQueue extends AbstractCollection
      * @return true
      */
 
-    public boolean add(Object o)
-    {
+    public boolean add(Object o) {
         myList.add(o);        // stored, but not correct location
         mySize++;             // added element, update count
         int k = mySize;       // location of new element
 
-        while (k > 1 && myComp.compare(myList.get(k/2), o) > 0)
-        {
-            myList.set(k, myList.get(k/2));
+        while (k > 1 && myComp.compare(myList.get(k / 2), o) > 0) {
+            myList.set(k, myList.get(k / 2));
             k /= 2;
         }
-        myList.set(k,o);
+        myList.set(k, o);
 
         return true;
     }
@@ -125,16 +112,14 @@ public class PriorityQueue extends AbstractCollection
     /**
      * @return the number of elements in the priority queue
      */
-    public int size()
-    {
+    public int size() {
         return mySize;
     }
 
     /**
      * @return true if and only if the priority queue is empty
      */
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return mySize == 0;
     }
 
@@ -145,17 +130,14 @@ public class PriorityQueue extends AbstractCollection
      * @return the smallest element (and removes it)
      */
 
-    public Object remove()
-    {
-        if (! isEmpty())
-        {
+    public Object remove() {
+        if (!isEmpty()) {
             Object hold = myList.get(1);
 
             myList.set(1, myList.get(mySize));  // move last to top
             myList.remove(mySize);              // pop last off
             mySize--;
-            if (mySize > 1)
-            {
+            if (mySize > 1) {
                 heapify(1);
             }
             return hold;
@@ -165,50 +147,45 @@ public class PriorityQueue extends AbstractCollection
 
     /**
      * Executes in O(1) time, returns smallest element
+     *
      * @return the minimal element in the priority queue
      */
 
-    public Object peek()
-    {
+    public Object peek() {
         return myList.get(1);
     }
 
     /**
      * The order of the elements returned by the iterator is not specified
+     *
      * @return an iterator of all elements in priority queue
      */
 
-    public Iterator iterator()
-    {
+    public Iterator iterator() {
         return new PQItr();
     }
 
     /**
      * works in O(log(size()-vroot)) time
+     *
      * @param vroot is the index at which re-heaping occurs
      * @precondition: subheaps of index vroot are heaps
      * @postcondition: heap rooted at index vroot is a heap
      */
 
-    private void heapify(int vroot)
-    {
+    private void heapify(int vroot) {
         Object last = myList.get(vroot);
         int child, k = vroot;
-        while (2*k <= mySize)
-        {
-            child = 2*k;
+        while (2 * k <= mySize) {
+            child = 2 * k;
             if (child < mySize &&
                     myComp.compare(myList.get(child),
-                            myList.get(child+1)) > 0)
-            {
+                            myList.get(child + 1)) > 0) {
                 child++;
             }
-            if (myComp.compare(last, myList.get(child)) <= 0)
-            {
+            if (myComp.compare(last, myList.get(child)) <= 0) {
                 break;
-            }
-            else
-            {
+            } else {
                 myList.set(k, myList.get(child));
                 k = child;
             }
@@ -224,14 +201,12 @@ public class PriorityQueue extends AbstractCollection
      * thus effectively sorting in O(n log n) time
      */
 
-    public static void main(String args[])
-    {
-        String[] array = new String[]{"acd","defg","abc","eh"};
+    public static void main(String args[]) {
+        String[] array = new String[]{"acd", "defg", "abc", "eh"};
 
         PriorityQueue pq = new PriorityQueue(Arrays.asList(array));
 
-        while (pq.size() > 0)
-        {
+        while (pq.size() > 0) {
             System.out.println(pq.peek());
             pq.remove();
         }
