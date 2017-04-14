@@ -1,7 +1,7 @@
 /**
  * Created by udingji on 2/16/17.
  */
-public class SodokuSolver {
+public class SudokuSolver {
 
     public void solveSudoku(char[][] board) {
         if (board == null || board.length < 9) return;
