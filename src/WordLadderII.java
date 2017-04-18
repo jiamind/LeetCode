@@ -23,7 +23,7 @@ public class WordLadderII {
         List<List<String>> result = new ArrayList<>();
         // Create a hashmap to store list of neighbors of each word
         HashMap<String,List<String>> neighbors = new HashMap<>();
-        // Create a hashmao to store the distance from the start word to each word
+        // Create a hashmap to store the distance from the start word to each word
         HashMap<String,Integer> distance = new HashMap<>();
         // Create a list to store each path
         ArrayList<String> path = new ArrayList<>();
