@@ -1,10 +1,12 @@
-package test;
 
 /**
  * Created by udingji on 2/17/17.
  */
 public class TrappingRainWater {
 
+    // Idea: use two pointers to scan towards each other from the start and end point of the height array
+    // Store the max height on the left and right side
+    // Update the volume base on the volume difference to the max on the left and right
     public static int trap(int[] height) {
         if (height.length < 3) return 0;
 

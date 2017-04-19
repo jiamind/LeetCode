@@ -1,4 +1,3 @@
-package test;
 
 /**
  * Created by udingji on 2/17/17.
