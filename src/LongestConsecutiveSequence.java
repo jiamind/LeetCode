@@ -17,7 +17,7 @@ public class LongestConsecutiveSequence {
                 // Check if there are numbers adjacent to its left and right. If so, get their length of consecutive sequence
                 int left = (map.containsKey(n - 1)) ? map.get(n - 1) : 0;
                 int right = (map.containsKey(n + 1)) ? map.get(n + 1) : 0;
-                // The length of consecutive sequence at this number is left plus right plus 1
+                // The length of consecutive sequence at this number is left plus right plus 1 (itself)
                 int sum = left + right + 1;
                 // Put this number and its length into the hashmap
                 map.put(n, sum);
@@ -25,7 +25,7 @@ public class LongestConsecutiveSequence {
                 // Update the max length of consecutive sequence
                 res = Math.max(res, sum);
 
-                // Update the length of consecutive sequence at both edges of the current sequence
+                // Update the length of consecutive sequence at both edges of the (new) current sequence
                 map.put(n - left, sum);
                 map.put(n + right, sum);
             }
