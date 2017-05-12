@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Created by udingji on 4/26/17.
@@ -42,13 +43,13 @@ public class SerializeAndDeserializeBinaryTree {
 
         // Decodes your encoded data to tree.
         public TreeNode deserialize(String data) {
-            Deque<String> nodes = new LinkedList<>();
+            Queue<String> nodes = new LinkedList<>();
             nodes.addAll(Arrays.asList(data.split(spliter)));
             return buildTree(nodes);
         }
 
-        private TreeNode buildTree(Deque<String> nodes) {
-            String val = nodes.remove();
+        private TreeNode buildTree(Queue<String> nodes) {
+            String val = nodes.poll();
             if (val.equals(NN))
                 return null;
             else {
