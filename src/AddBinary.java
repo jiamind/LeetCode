@@ -19,7 +19,7 @@ public class AddBinary {
             int i1 = i >= array1.length ? 0 : array1[array1.length-1-i] - '0';
             int i2 = i >= array2.length ? 0 : array2[array2.length-1-i] - '0';
 
-            // Add them together with any carryover and append the number in the stringbuilde. If the sum exceeds 1, sum - 1 and set carryOver to 1
+            // Add them together with any carryover and append the number in the string builder. If the sum exceeds 1, sum - 1 and set carryOver to 1
             if (i1+i2+carryOver >= 2){
                 sb.append(i1+i2+carryOver-2);
                 carryOver = 1;
@@ -34,7 +34,7 @@ public class AddBinary {
         if (carryOver == 1){
             sb.append(1);
         }
-        // Reverse the stringbuilde and reture result
+        // Reverse the string builder and return result
         return sb.reverse().toString();
     }
 

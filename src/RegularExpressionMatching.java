@@ -32,7 +32,7 @@ public class RegularExpressionMatching {
                         // Whether the character matches with the previous pattern
                         dp[i+1][j+1] = dp[i+1][j-1];
                     } else {
-                        // We can either think character at j=1 is equal to character at i
+                        // We can either think character at j-1 is equal to character at i
                         // Or the character at j-1 is '.' (could be any character, ignore current i)
                         // Or this '*' means 0 occurrence
                         dp[i+1][j+1] = (dp[i+1][j] || dp[i][j+1] || dp[i+1][j-1]);
