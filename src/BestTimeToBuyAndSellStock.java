@@ -18,7 +18,7 @@ public class BestTimeToBuyAndSellStock {
         // Initiate the max profit as 0, the min value as the first value in the prices array
         int maxProf = 0, minValue = prices[0];
 
-        // Iterate throught the prices array, starting from the second value
+        // Iterate through the prices array, starting from the second value
         for (int i = 1; i < prices.length; i++){
             // If the current price is greater than the previous price
             if (prices[i] > prices[i-1]){
