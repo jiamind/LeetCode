@@ -27,7 +27,7 @@ public class SearchInRotatedSortedArray {
                 // the mid is to the right of the pivot
                 if (target == nums[mid]) return mid;
                 if (target == nums[right]) return right;
-                // If the target is within left and mid, bring the left up to mid + 1
+                // If the target is within mid and right, bring the left up to mid + 1
                 if (target > nums[mid] && target < nums[right]){
                     left = mid + 1;
                 }else {

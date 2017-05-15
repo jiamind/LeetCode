@@ -24,61 +24,6 @@ public class InsertInterval {
     }
 
 
-//    public static List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-//
-//        List<Interval> result = new ArrayList<>();
-//        if (intervals == null){
-//            result.add(newInterval);
-//            return result;
-//        }
-//        if (intervals.size() == 0){
-//            intervals.add(newInterval);
-//            return intervals;
-//        }
-//
-//        if (newInterval.end < intervals.get(0).start){
-//            result.add(newInterval);
-//            result.addAll(intervals);
-//            return result;
-//        }
-//        if (newInterval.start > intervals.get(intervals.size()-1).end){
-//            intervals.add(newInterval);
-//            return intervals;
-//        }
-//
-//        int left = 0, right = intervals.size(), start = 0;
-//
-//        while (left < right){
-//            int mid = (left + right) / 2;
-//            if (intervals.get(mid).start < newInterval.start){
-//                left = mid + 1;
-//            }else {
-//                right = mid;
-//            }
-//        }
-//        start = left;
-//
-//        if (newInterval.start < intervals.get(0).start) {
-//            intervals.add(0, newInterval);
-//        } else {
-//            intervals.add(start, newInterval);
-//        }
-//
-//        Interval cur = intervals.get(start-1 < 0 ? 0 : start - 1);
-//        for (int i = start - 1 < 0 ? 1 : start; i < intervals.size(); i++){
-//            Interval next = intervals.get(i);
-//            if (cur.end >= next.start){
-//                cur.end = Math.max(cur.end,next.end);
-//                intervals.remove(i);
-//                i--;
-//            }else {
-//                cur = next;
-//            }
-//        }
-//
-//        return intervals;
-//    }
-
     public static List<Interval> insert(List<Interval> intervals, Interval newInterval) {
 
         List<Interval> result = new ArrayList<>();

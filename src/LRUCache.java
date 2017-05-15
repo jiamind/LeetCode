@@ -95,12 +95,12 @@ public class LRUCache {
         if (head == null) {
             head = node;
             end = node;
-            node.prev = null;
+            node.next = null;
         } else {
             node.next = head;
             head.prev = node;
             head = node;
         }
-        node.next = null;
+        node.prev = null;
     }
 }
