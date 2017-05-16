@@ -4,17 +4,19 @@
 public class ImplementStrStr {
 
     public static int strStr(String haystack, String needle) {
-        if (haystack == null || needle == null || haystack.length() < needle.length())
-            return -1;
+        char[] h = haystack.toCharArray();
+        char[] n = needle.toCharArray();
 
-//        if (haystack.isEmpty() && needle.isEmpty()) return 0;
-
-        // Iterate through the haystack
-        for (int i = 0; i < haystack.length() - needle.length() + 1; i++){
-            if (haystack.substring(i,i+needle.length()).equals(needle))
-                return i;
+        for (int i = 0; ; i++){
+            for (int j = 0; ; j++){
+                if (j == n.length)
+                    return i;
+                if (i + j >= h.length)
+                    return -1;
+                if (h[i+j] != n[j])
+                    break;
+            }
         }
-        return -1;
     }
 
     public static void main(String[] args) {
