@@ -58,7 +58,7 @@ public class PopulatingNextRightPointersInEachNodeII {
                         prev.next = node.right;
                     // Now the previously linked node becomes the right node
                     prev = node.right;
-                    // If teh current node only has a left node
+                    // If the current node only has a left node
                 } else if (node.left != null && node.right == null){
                     // If the starting node of the next level hasn't set, set it to the left node
                     if (levelStart == null)
