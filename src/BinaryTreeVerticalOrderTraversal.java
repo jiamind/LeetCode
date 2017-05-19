@@ -20,11 +20,32 @@ public class BinaryTreeVerticalOrderTraversal {
         }
     }
 
+    // Question: Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
+    // If two nodes are in the same row and column, the order should be from left to right.
+
+    // Example:
+    // Given binary tree [3,9,20,null,null,15,7],
+    //       3
+    //      /\
+    //     /  \
+    //    9  20
+    //       /\
+    //      /  \
+    //     15   7
+
+    // [
+    // [9],
+    // [3,15],
+    // [20],
+    // [7]
+    // ]
+
+
     // Idea: Level order traverse the tree starting from the root. root will have column number 0
     // Any left node will have 1 less value in column, any right node will have 1 more value in column
     // Keep track of the min and max column value as we traverse the tree
     // Save the column and node values combination in the hash table
-    // Add hashtable values from min to max to the result list
+    // Add hash table values from min to max to the result list
     public List<List<Integer>> verticalOrder(TreeNode root) {
 
         List<List<Integer>> result = new ArrayList<>();

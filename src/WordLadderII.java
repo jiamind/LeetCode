@@ -65,7 +65,7 @@ public class WordLadderII {
                 String word = queue.poll();
                 // Get the word's distance to the start word
                 int currentDistance = distance.get(word);
-                // Get all the neighors of the current word
+                // Get all the neighbors of the current word
                 List<String> wordNeighbors = findNeighbors(word,dictionary);
 
                 // Iterate through all the neighbors of the current word

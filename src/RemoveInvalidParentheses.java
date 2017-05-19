@@ -23,7 +23,7 @@ public class RemoveInvalidParentheses {
 
         // Create a queue to store strings at each level (after remove a parentheses)
         Queue<String> queue = new LinkedList<String>();
-        // Create a hash set to store each string we processed to aviod duplicate result
+        // Create a hash set to store each string we processed to avoid duplicate results
         HashSet<String> visited = new HashSet<>();
 
         // Add the original string to the queue and add it to the visited hash set

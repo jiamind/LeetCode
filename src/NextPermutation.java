@@ -9,7 +9,7 @@ public class NextPermutation {
 
         // Scan from the right to the left, find the first element that is less than its previous value
         // 4 5 6 7 2 1
-        //   p
+        //     p
         int p = 0;
         for (int i = nums.length - 2; i >= 0; i--){
             if (nums[i] < nums[i+1]){
@@ -20,7 +20,7 @@ public class NextPermutation {
 
         // Scan from right to left, find the first element that is greater than p
         // 4 5 6 7 2 1
-        //     q
+        //       q
         int q = 0;
         for (int i = nums.length - 1; i > p; i--){
             if (nums[i] > nums[p]){
@@ -31,6 +31,10 @@ public class NextPermutation {
 
         // If it's the last permutation, reverse the whole list
         // Otherwise, swap p and q, reverse from p+1 to the end of the list
+        // 4 5 7 6 2 1
+        //
+        //
+        // 4 5 7 1 2 6
         if (p == 0 && q == 0) {
             reverse(nums, 0, nums.length - 1);
         }else {
@@ -53,7 +57,7 @@ public class NextPermutation {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,2,3};
+        int[] nums = {4,5,6,7,2,1};
         nextPermutation(nums);
         for (int i : nums)
             System.out.print(i + ", ");

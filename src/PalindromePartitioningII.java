@@ -36,7 +36,7 @@ public class PalindromePartitioningII {
     }
 
     public static void main(String[] args) {
-        String s = "abaaba";
+        String s = "aab";
         System.out.println(minCut(s));
     }
 }

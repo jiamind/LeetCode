@@ -5,7 +5,9 @@ import java.util.Stack;
  */
 public class LongestValidParentheses {
 
-
+    // Idea: Push all left parentheses '(' to the stack
+    // If we are at a right parentheses ')', push it only if the stack is empty or the top in the stack is also a right parentheses ')'
+    // Otherwise (the top in the stack is a left parentheses), pop the top and update the max with the new top in the stack
     public static int longestValidParentheses(String s) {
         if (s == null || s.length() < 2) return 0;
 

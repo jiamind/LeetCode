@@ -18,7 +18,7 @@ public class FirstMissingPositive {
             // or the number is at the right index (equals index + 1)
             // Move the pointer forward
             if (nums[i] <= 0 || nums[i] > nums.length || nums[i] == i + 1) i++;
-            // If the number - 1 is not equal to i, swap the number to its right position
+            // If the array at index num[i] - 1 does not have the correct value (this current value), swipe the current value to the right index
             else if (nums[nums[i]-1] != nums[i]) swap(nums,i,nums[i]-1);
             // Otherwise, move the pointer forward
             else i++;
