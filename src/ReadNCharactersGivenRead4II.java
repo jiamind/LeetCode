@@ -13,7 +13,7 @@ public class ReadNCharactersGivenRead4II {
      * @return    The number of characters read
      */
 
-    // Define the index we left off in our temporary buffer, and number of characters we read from the file into the buffer.
+    // Define the last time the index we left off in our temporary buffer, as well as the number of characters we read from the file into the buffer.
     // Those are global variables since this method might be called multiple times
     int bufferIndex = 0;
     char[] buffer = new char[4];
