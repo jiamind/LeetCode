@@ -32,7 +32,7 @@ public class NextPermutation {
         // If it's the last permutation, reverse the whole list
         // Otherwise, swap p and q, reverse from p+1 to the end of the list
         // 4 5 7 6 2 1
-        //
+        //     p q
         //
         // 4 5 7 1 2 6
         if (p == 0 && q == 0) {

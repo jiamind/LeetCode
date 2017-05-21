@@ -25,7 +25,7 @@ public class SearchForARange {
             if (target > nums[mid]){
                 left = mid + 1;
             }else {
-                // The target os less than or equal to the number at mid, bring down the right pointer to mids
+                // The target os less than or equal to the number at mid, bring down the right pointer to mid
                 right = mid;
             }
         }

@@ -11,7 +11,7 @@ public class BestTimeToBuyAndSellStock {
     // But there is still chance that this value is a new buy in point. Update the min value if this value is smaller than the min value.
     public static int maxProfit(int[] prices) {
 
-        // If prices is null, or the lenght of the prices is less than 2, return 0
+        // If prices is null, or the length of the prices is less than 2, return 0
         if (prices == null || prices.length < 2)
             return 0;
 

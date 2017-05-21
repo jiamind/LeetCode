@@ -32,7 +32,7 @@ public class TheSkyLineProblem {
         priorityQueue.offer(0);
 
         // Keep track of the previous height (if the current height is the same as previous one, no need to add new point to the result)
-        int prev = 0;
+        int prevHeight = 0;
 
         // For each vertex we have
         for (int[] h : height){
@@ -44,13 +44,13 @@ public class TheSkyLineProblem {
                 priorityQueue.remove(h[1]);
             }
             // Get the current highest height in the priority queue
-            int current = priorityQueue.peek();
+            int currentHeight = priorityQueue.peek();
             // If the current height does not equal to previous height. (Otherwise, don't need to create a new point)
-            if (current != prev){
+            if (currentHeight != prevHeight){
                 // Add a new key point to the result list
-                result.add(new int[]{h[0],current});
+                result.add(new int[]{h[0],currentHeight});
                 // Update the previous height as the current height
-                prev = current;
+                prevHeight = currentHeight;
             }
         }
         return result;
