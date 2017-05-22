@@ -27,11 +27,18 @@ public class MaximalRectangle {
     }
 
     // http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
-    private int maxAreaAtRow(int[] rowHeight){
+    private static int maxAreaAtRow(int[] rowHeight){
         Stack<Integer> s = new Stack<Integer>();
         int maxArea = 0;
+        // Iterate through the array
         for(int i = 0; i <= rowHeight.length; i++){
+            // Get the height of the current bar
             int h = (i == rowHeight.length ? 0 : rowHeight[i]);
+            // If the stack is empty, or the current bar is taller than the top in the stack
+            // Push it into the stack
+            // Otherwise, consider the top bar in the stack is the minimum height of a series of consecutive bars,
+            // bounded by the current i and the previous bar in the stack.
+            // Update the max height
             if(s.isEmpty() || h >= rowHeight[s.peek()]){
                 s.push(i);
             }else{
@@ -41,5 +48,10 @@ public class MaximalRectangle {
             }
         }
         return maxArea;
+    }
+
+    public static void main(String[] args) {
+        int[] rowHeight = {6,2,5,4,5,1,6};
+        System.out.println(maxAreaAtRow(rowHeight));
     }
 }
