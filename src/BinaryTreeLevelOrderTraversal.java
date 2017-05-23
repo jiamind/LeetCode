@@ -29,7 +29,6 @@ public class BinaryTreeLevelOrderTraversal {
         // Create a linkedlist (queue) to store tree nodes at each level
         LinkedList<TreeNode> list = new LinkedList<>();
 
-
         list.add(root);
 
         // While there is tree node in the queue
