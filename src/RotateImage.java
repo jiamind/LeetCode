@@ -20,12 +20,12 @@ public class RotateImage {
                 // Move left to the top
                 // The row index of the left becomes smaller (getting closer to the top) as c grows,
                 // Column index becomes larger (getting closer to the right) as r grows
-                matrix[r][c] = matrix[column - 1 - c][r];
+                matrix[r][c] = matrix[row - 1 - c][r];
 
                 // Move bottom to the left
                 // The row index of the bottom becomes smaller (getting closer to the top) as r grows
                 // Column index becomes smaller (closer to the left) as c grows
-                matrix[column - 1 - c][r] = matrix[row - 1 - r][column - 1 - c];
+                matrix[row - 1 - c][r] = matrix[row - 1 - r][column - 1 - c];
 
                 // Move right to the bottom
                 // The row index of the right bottom becomes larger (getting closer to the bottom) as c grows
