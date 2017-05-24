@@ -5,17 +5,17 @@ public class IncreasingTripletSubsequence {
 
     public boolean increasingTriplet(int[] nums) {
 
-        // Create two integers to hold the min and max bound of the two increasing numbers
-        int lower = Integer.MAX_VALUE, upper = Integer.MAX_VALUE;
+        // Create two integers to hold the i and j
+        int i = Integer.MAX_VALUE, j = Integer.MAX_VALUE;
 
-        // If we find a third number which is smaller than the lower bound, update the lower bound (anything greater than the new lower bound is accepted)
-        // If we find a third number which is smaller than the upper bound, update the upper bound (anything between the old and new upper bound is NOT accepted)
-        // Otherwise, the third number is greater than the upper bound, we found the three increasing numbers
+        // If we find a number which is smaller than i, update i
+        // If we find a number which is greater than i but smaller than j, update j
+        // Otherwise, the number is greater than both i and j, we found the three increasing numbers
         for (int num : nums){
-            if (num < lower){
-                lower = num;
-            } else if (num < upper){
-                upper = num;
+            if (num < i){
+                i = num;
+            } else if (num < j){
+                j = num;
             } else {
                 return true;
             }
