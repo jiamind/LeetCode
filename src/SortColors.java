@@ -32,7 +32,7 @@ public class SortColors {
         for (int i = 0; i < nums.length; i++){
             while (nums[i] == BLUE && i < bluePointer)
                 swap(nums, i, bluePointer--);
-            while (nums[i] == RED && i > redPointer++)
+            while (nums[i] == RED && i > redPointer)
                 swap(nums, i, redPointer++);
         }
     }
