@@ -15,43 +15,6 @@ public class PopulatingNextRightPointersInEachNode {
         }
     }
 
-    public static void connect(TreeLinkNode root) {
-
-        // If the root is null, return
-        if (root == null)
-            return;
-
-        // Create a linked list (queue) to store the treelinknode to be linked
-        LinkedList<TreeLinkNode> list = new LinkedList<>();
-
-        // Add the root to the list
-        list.add(root);
-
-        // While there is treelinknode to be linked
-        while (list.size() > 0){
-
-            // Get the size of treelinknode to the linked at this level
-            int size = list.size();
-            // Iterate through the treelinknode to be linked at this level
-            for (int i = 0; i < size; i++){
-                // Remove the treelinknode at the top of the queue
-                TreeLinkNode node = list.remove();
-                // If the node is the last at this level, the next pointer of it points to null
-                // Otherwise, peek the next node and makes the nex pointer of it points to the next node
-                if (i == size - 1){
-                    node.next = null;
-                } else {
-                    node.next = list.peek();
-                }
-                // Add any non null left or right node of the current node to the list
-                if (node.left != null)
-                    list.add(node.left);
-                if (node.right != null)
-                    list.add(node.right);
-            }
-        }
-    }
-
 
     // Use constant memory space
     public static void connect2(TreeLinkNode root) {

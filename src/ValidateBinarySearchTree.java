@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Created by udingji on 3/7/17.
  */
@@ -22,6 +24,7 @@ public class ValidateBinarySearchTree {
         return validate(root);
     }
 
+    // Recursive
     private static boolean validate(TreeNode treeNode){
         // If the current tree node is null, it is valid
         if (treeNode == null) return true;
@@ -35,9 +38,32 @@ public class ValidateBinarySearchTree {
         return validate(treeNode.right);
     }
 
+    // Iterative
+    public static boolean isValidBST2(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode prev = null;
+
+        while (root != null || !stack.isEmpty()){
+            while (root != null){
+                stack.push(root);
+                root = root.left;
+            }
+
+            if (prev != null && prev.val >= root.val)
+                return false;
+
+            prev = root;
+
+            root = root.right;
+
+        }
+
+        return true;
+    }
+
 
     // Idea: Use max and min long value to restrict the range of each node value
-    public static boolean isValidBST2(TreeNode root){
+    public static boolean isValidBST3(TreeNode root){
         return validate(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 

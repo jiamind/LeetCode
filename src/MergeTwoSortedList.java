@@ -14,55 +14,37 @@ public class MergeTwoSortedList {
         }
     }
 
+    // Idea: create a dummy node. Compare and append node in l1 and l2 to the dummy node
+    // Return the next node of the dummy node as the new head of merged linked list
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        // Create a result ListNode
-        ListNode result = null;
-        // Create a head pointer points to the head of the result ListNode
-        ListNode head = null;
+        ListNode dummy = new ListNode(0);
+        ListNode node = dummy;
 
-        // If both of the list nodes are not null, set the result by comparing the two values
-        // If any of the list nodes is null, return the other
-        if (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                result = l1;
-                l1 = l1.next;
-            } else {
-                result = l2;
-                l2 = l2.next;
-            }
-        } else if (l1 == null) {
-            return l2;
-        } else {
-            return l1;
-        }
-        // Head pointer points to the result
-        head = result;
+        ListNode p1 = l1, p2 = l2;
 
-        // If any of the list node is not null
-        while (l1 != null || l2 != null) {
-            // If l1 is null, the rest of result will be l2. Return head
-            // If l2 is null, the rest of result will be l1. Return head
-            if (l1 == null) {
-                result.next = l2;
-                return head;
-            } else if (l2 == null) {
-                result.next = l1;
-                return head;
-            }
-            // If the value of l2 is greater than l1, set the next of result to be l1. Move l1 to the next and result to the next
-            // If the value of l1 is greater than l2, set the next of result to be l2. Move l2 to the next and result to the next
-            if (l1.val < l2.val) {
-                result.next = l1;
-                l1 = l1.next;
-                result = result.next;
+        while (p1 != null && p2 != null){
+            if (p1.val < p2.val){
+                node.next = p1;
+                p1 = p1.next;
             } else {
-                result.next = l2;
-                l2 = l2.next;
-                result = result.next;
+                node.next = p2;
+                p2 = p2.next;
             }
+            node = node.next;
         }
-        // Return the head pointer
-        return head;
+
+        while (p1 != null){
+            node.next = p1;
+            p1 = p1.next;
+            node = node.next;
+        }
+        while (p2 != null){
+            node.next = p2;
+            p2 = p2.next;
+            node = node.next;
+        }
+
+        return dummy.next;
     }
 
     public static void main(String[] args) {
