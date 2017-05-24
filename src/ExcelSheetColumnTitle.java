@@ -9,12 +9,14 @@ public class ExcelSheetColumnTitle {
         char base = 'A' - 1;
 
         while (n > 0){
+            // If the number is a multiply of 26 (must be greater than or equal to 26), prepend a 'Z'
             if (n / 26 > 0 && n % 26 == 0) {
                 n -= 26;
                 sb.insert(0, "Z");
             }else {
                 sb.insert(0, (char) (base + n % 26));
             }
+            // We are done with the current digit
             n /= 26;
         }
 

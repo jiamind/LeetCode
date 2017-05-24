@@ -16,7 +16,7 @@ public class SpiralMatrix {
 
         int column = matrix[0].length;
 
-        // Starting postion of the top, right, bottom, left bounds
+        // Starting position of the top, right, bottom, left bounds
         int topRow = 0, rightColumn = column - 1, bottomRow = row - 1, leftColumn = 0;
 
         while (topRow <= bottomRow && leftColumn <= rightColumn){

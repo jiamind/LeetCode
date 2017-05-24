@@ -4,56 +4,6 @@
 public class SpiralMatrixII {
 
     public static int[][] generateMatrix(int n) {
-        int[][] result;
-        if (n == 0){
-            result = new int[0][0];
-            return result;
-        }
-        if (n == 1){
-            result = new int[1][];
-            result[0] = new int[]{1};
-            return result;
-        }
-
-        result = new int[n][n];
-
-        int layer = 0;
-        int counter = 1;
-        while (layer < ((n + 1) / 2)){
-
-            if (layer != 0){
-                // up
-                for (int i = n - layer - 1; i >= layer; i--){
-                    if (result[i][layer-1] != 0) return result;
-                    result[i][layer-1] = counter++;
-                }
-            }
-
-            // right
-            for (int i = layer; i < n - layer; i++){
-                if (result[layer][i] != 0) return result;
-                result[layer][i] = counter++;
-            }
-
-            // down
-            for (int i = layer + 1; i < n - layer; i++){
-                if (result[i][n-layer-1] != 0) return result;
-                result[i][n-layer-1] = counter++;
-            }
-
-            // left
-            for (int i = n - layer - 2; i >= layer; i--){
-                if (result[n-layer-1][i] != 0) return result;
-                result[n-layer-1][i] = counter++;
-            }
-
-            layer++;
-
-        }
-        return result;
-    }
-
-    public static int[][] generateMatrix2(int n) {
         // Create a nxn matrix
         int[][] ret = new int[n][n];
         // Left: the first column index when populate from left to right
