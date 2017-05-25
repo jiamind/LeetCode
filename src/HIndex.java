@@ -25,6 +25,7 @@ public class HIndex {
 
         for (int i = numOfCitations.length - 1; i >= 0; i--){
             total += numOfCitations[i];
+            // If the number of papers which have more than i citations is greater than i, return the index i
             if (total >= i)
                 return i;
         }

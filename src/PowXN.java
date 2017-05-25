@@ -3,28 +3,6 @@
  */
 public class PowXN {
 
-    //    public static double myPow(double x, int n) {
-    //
-    //        if (n == 0) return 1;
-    //        boolean isNegative = n < 0 ? true : false;
-    //        n = Math.abs(n);
-    //        double result = x;
-    //
-    //        int count = 1;
-    //
-    //        while (count * 2 <= n){
-    //            count *= 2;
-    //            result *= result;
-    //        }
-    //
-    //        while (count < n){
-    //            result *= x;
-    //            count++;
-    //        }
-    //
-    //        return isNegative ? 1.0 / result : result;
-    //    }
-
     public static double myPow(double x, int n) {
         // Any number to the power of 0 is 1
         if (n == 0){
@@ -36,7 +14,7 @@ public class PowXN {
             n++;
             x = 1/x;
             n = -n;
-            return myPow(x*x, n/2);
+            return x*x*myPow(x*x, n/2);
         }
         // If n is negative, set x = 1/x and n = -n
         if (n < 0){

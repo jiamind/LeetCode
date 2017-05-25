@@ -6,8 +6,8 @@ import java.util.Queue;
  */
 public class WallsAndGates {
 
-    // Idea: iterate through all rooms. Put all empty rooms into a queue
-    // For each empty room in the queue, update the distance of any neighbor which is an empty room. Push the neighbor into the queues
+    // Idea: iterate through all rooms. Put all gates into a queue
+    // For each gate or room with distance in the queue, update the distance of any neighbor which is an empty room. Push the neighbor rooms into the queues
     public void wallsAndGates(int[][] rooms) {
 
         int WALL = -1, GATE = 0, EMPTY_ROOM = Integer.MAX_VALUE;
