@@ -29,10 +29,10 @@ public class ConstructBinaryTreeFromInorderandPostorderTraversal {
         }
 
         // Scan in the postorder list from the end
-        return recurBuildTree(postorder.length-1, 0,inorder.length-1,inorder,postorder,inOrderRoots);
+        return recurBuildTree(postorder.length-1, 0,inorder.length-1,postorder,inOrderRoots);
     }
 
-    private static TreeNode recurBuildTree(int postOrderStart, int inOrderStart, int inOrderEnd, int[] inOrder, int[] postOrder, HashMap<Integer,Integer> inOrderRoots){
+    private static TreeNode recurBuildTree(int postOrderStart, int inOrderStart, int inOrderEnd, int[] postOrder, HashMap<Integer,Integer> inOrderRoots){
 
         // If we reach the beginning of the postorder list, or the starting position of inorder list is greater than the end position of inorder list
         if (postOrderStart < 0 || inOrderStart > inOrderEnd){
@@ -46,12 +46,12 @@ public class ConstructBinaryTreeFromInorderandPostorderTraversal {
         // Link the left node
         // The starting position in the postorder list would be the current position minus the number of right sub nodes minus 1
         // The starting position in the inorder list remains the same. The ending position is just before the index (current root in inorder list)
-        treeNode.left = recurBuildTree(postOrderStart - (inOrderEnd - index) - 1, inOrderStart, index-1,inOrder,postOrder,inOrderRoots);
+        treeNode.left = recurBuildTree(postOrderStart - (inOrderEnd - index) - 1, inOrderStart, index-1,postOrder,inOrderRoots);
         // Link the right node
         // The starting position in the postorder list is just before the current root in the postorder list (postorder: left -> [right] -> root)
         // The starting position in the inorder list is just after the index (current root in the inorder list)
         // The ending position in the inorder list remains the same
-        treeNode.right = recurBuildTree(postOrderStart-1,index+1,inOrderEnd,inOrder,postOrder,inOrderRoots);
+        treeNode.right = recurBuildTree(postOrderStart-1,index+1,inOrderEnd,postOrder,inOrderRoots);
         return treeNode;
     }
 }

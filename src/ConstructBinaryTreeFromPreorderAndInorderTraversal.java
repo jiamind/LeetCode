@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Created by jmding on 3/13/17.
  */
@@ -20,10 +22,15 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
 
     public static TreeNode buildTree(int[] preorder, int[] inorder) {
 
-        return recurBuildTree(0,0,preorder.length - 1,preorder,inorder);
+        HashMap<Integer,Integer> inorderMap = new HashMap<>();
+        for (int i = 0; i < inorder.length; i++){
+            inorderMap.put(inorder[i],i);
+        }
+
+        return recurBuildTree(0,0,preorder.length - 1,preorder,inorderMap);
     }
 
-    private static TreeNode recurBuildTree(int preOrderStart, int inOrderStart, int inOrderEnd, int[] preOrder, int[] inOrder){
+    private static TreeNode recurBuildTree(int preOrderStart, int inOrderStart, int inOrderEnd, int[] preOrder, HashMap<Integer,Integer> inorderMap){
 
         // If we reach the end of the preorder list, or start scanning position in the inorder list is greater than the end position
         // Return null
@@ -35,22 +42,16 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         TreeNode node = new TreeNode(preOrder[preOrderStart]);
 
         // Find the same value in the inorder list
-        int index = 0;
-        for (int i = inOrderStart; i <= inOrderEnd; i++){
-            if (inOrder[i] == preOrder[preOrderStart]){
-                index = i;
-                break;
-            }
-        }
+        int index = inorderMap.get(preOrder[preOrderStart]);
 
         // Link the left node. The next root node would be preOrderStart + 1
         // The starting position in the inOrder list remains the same (scan from the beginning)
         // The end position in the inOrder list is just before that root index we found in the inorder list
-        node.left = recurBuildTree(preOrderStart+1, inOrderStart,index - 1,preOrder,inOrder);
+        node.left = recurBuildTree(preOrderStart+1, inOrderStart,index - 1,preOrder,inorderMap);
         // Link the right node. The next root node would be the current position plus the number of nodes in the left subtree ( index minus the start position in inorder list) plus one
         // The starting position in the inorder list is just after the index
         // The end position in th inOrder list remains the same
-        node.right = recurBuildTree(preOrderStart + index - inOrderStart + 1, index + 1, inOrderEnd, preOrder, inOrder);
+        node.right = recurBuildTree(preOrderStart + index - inOrderStart + 1, index + 1, inOrderEnd, preOrder, inorderMap);
         return node;
     }
 }
