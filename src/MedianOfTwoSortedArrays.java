@@ -22,20 +22,20 @@ public class MedianOfTwoSortedArrays {
         }
         // i is the cut point of nums1, j is the cut point of nums2
         int i, j;
-        // min is the start index of nums1. max is the end index of nums1, half is the half size of the combined array
-        int min = 0, max = nums1.length, half = (nums1.length + nums2.length + 1) / 2;
-        while (min <= max) {
+        // left is the start index of nums1. right is the end index of nums1, half is the half size of the combined array
+        int left = 0, right = nums1.length, half = (nums1.length + nums2.length + 1) / 2;
+        while (left <= right) {
             // Choose the mid as the cut point of nums1
-            i = (min + max) / 2;
+            i = (left + right) / 2;
             // The cut point of nums2 will be the rest of the half size
             j = half - i;
 
             if (i < nums1.length && nums2[j - 1] > nums1[i]) {
                 // i is too small
-                min++;
+                left++;
             } else if (i > 0 && nums1[i - 1] > nums2[j]) {
                 // i is too big
-                max--;
+                right--;
             } else {
                 int max_left, min_right;
                 if (i == 0) {
