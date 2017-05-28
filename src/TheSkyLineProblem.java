@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  */
 public class TheSkyLineProblem {
 
-    public List<int[]> getSkyline(int[][] buildings) {
+    public static List<int[]> getSkyline(int[][] buildings) {
         List<int[]> result = new ArrayList<>();
         List<int[]> height = new ArrayList<>();
 
@@ -38,7 +38,7 @@ public class TheSkyLineProblem {
         for (int[] h : height){
             // If this is a left vertex, add the positive height to the priority queue
             // Otherwise, remove this height
-            if (h[0] < 0){
+            if (h[1] < 0){
                 priorityQueue.offer(-h[1]);
             } else {
                 priorityQueue.remove(h[1]);
@@ -54,5 +54,17 @@ public class TheSkyLineProblem {
             }
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        int[][] buildings = {{0,2,3},{2,3,5}};
+        List<int[]> result = getSkyline(buildings);
+
+        for (int[] r : result){
+            for (int i : r){
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
     }
 }

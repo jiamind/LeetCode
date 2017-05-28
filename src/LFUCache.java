@@ -5,35 +5,38 @@ import java.util.LinkedHashSet;
  * Created by jmding on 4/27/17.
  */
 public class LFUCache {
-    private Node head = null;
+    // The head of the list of frequency nodes. The head stores the keys with the least count (least frequently accessed)
+    private FreqNode head = null;
     private int cap = 0;
-    private HashMap<Integer, Integer> valueHash = null;
-    private HashMap<Integer, Node> nodeHash = null;
+    // Key - value store for quick get access
+    private HashMap<Integer, Integer> valueMap = null;
+    // Key - FreqNode store for quick access the frequency node which contains the key
+    private HashMap<Integer, FreqNode> nodeMap = null;
 
     public LFUCache(int capacity) {
         this.cap = capacity;
-        valueHash = new HashMap<Integer, Integer>();
-        nodeHash = new HashMap<Integer, Node>();
+        valueMap = new HashMap<Integer, Integer>();
+        nodeMap = new HashMap<Integer, FreqNode>();
     }
 
     public int get(int key) {
-        if (valueHash.containsKey(key)) {
+        if (valueMap.containsKey(key)) {
             increaseCount(key);
-            return valueHash.get(key);
+            return valueMap.get(key);
         }
         return -1;
     }
 
     public void set(int key, int value) {
         if (cap == 0) return;
-        if (valueHash.containsKey(key)) {
-            valueHash.put(key, value);
+        if (valueMap.containsKey(key)) {
+            valueMap.put(key, value);
         } else {
-            if (valueHash.size() < cap) {
-                valueHash.put(key, value);
+            if (valueMap.size() < cap) {
+                valueMap.put(key, value);
             } else {
                 removeOld();
-                valueHash.put(key, value);
+                valueMap.put(key, value);
             }
             addToHead(key);
         }
@@ -42,42 +45,44 @@ public class LFUCache {
 
     private void addToHead(int key) {
         if (head == null) {
-            head = new Node(0);
+            head = new FreqNode(0);
             head.keys.add(key);
         } else if (head.count > 0) {
-            Node node = new Node(0);
-            node.keys.add(key);
-            node.next = head;
-            head.prev = node;
-            head = node;
+            FreqNode freqNode = new FreqNode(0);
+            freqNode.keys.add(key);
+            freqNode.next = head;
+            head.prev = freqNode;
+            head = freqNode;
         } else {
             head.keys.add(key);
         }
-        nodeHash.put(key, head);
+        nodeMap.put(key, head);
     }
 
     private void increaseCount(int key) {
-        Node node = nodeHash.get(key);
-        node.keys.remove(key);
+        // Remove this key from it's current frequency node. Move the key to the next frequency node (has one more frequency count)
+        FreqNode freqNode = nodeMap.get(key);
+        freqNode.keys.remove(key);
 
-        if (node.next == null) {
-            node.next = new Node(node.count + 1);
-            node.next.prev = node;
-            node.next.keys.add(key);
-        } else if (node.next.count == node.count + 1) {
-            node.next.keys.add(key);
+        if (freqNode.next == null) {
+            freqNode.next = new FreqNode(freqNode.count + 1);
+            freqNode.next.prev = freqNode;
+            freqNode.next.keys.add(key);
+        } else if (freqNode.next.count == freqNode.count + 1) {
+            freqNode.next.keys.add(key);
         } else {
-            Node tmp = new Node(node.count + 1);
+            FreqNode tmp = new FreqNode(freqNode.count + 1);
             tmp.keys.add(key);
-            tmp.prev = node;
-            tmp.next = node.next;
-            node.next.prev = tmp;
-            node.next = tmp;
+            tmp.prev = freqNode;
+            tmp.next = freqNode.next;
+            freqNode.next.prev = tmp;
+            freqNode.next = tmp;
         }
 
-        nodeHash.put(key, node.next);
-        if (node.keys.size() == 0)
-            remove(node);
+        // Check the old frequency node to see if it associate with no key. If so, remove that node
+        nodeMap.put(key, freqNode.next);
+        if (freqNode.keys.size() == 0)
+            remove(freqNode);
     }
 
     private void removeOld() {
@@ -89,27 +94,27 @@ public class LFUCache {
         }
         head.keys.remove(old);
         if (head.keys.size() == 0) remove(head);
-        nodeHash.remove(old);
-        valueHash.remove(old);
+        nodeMap.remove(old);
+        valueMap.remove(old);
     }
 
-    private void remove(Node node) {
-        if (node.prev == null) {
-            head = node.next;
+    private void remove(FreqNode freqNode) {
+        if (freqNode.prev == null) {
+            head = freqNode.next;
         } else {
-            node.prev.next = node.next;
+            freqNode.prev.next = freqNode.next;
         }
-        if (node.next != null) {
-            node.next.prev = node.prev;
+        if (freqNode.next != null) {
+            freqNode.next.prev = freqNode.prev;
         }
     }
 
-    private class Node {
+    private class FreqNode {
         public int count = 0;
         public LinkedHashSet<Integer> keys = null;
-        public Node prev = null, next = null;
+        public FreqNode prev = null, next = null;
 
-        public Node(int count) {
+        public FreqNode(int count) {
             this.count = count;
             keys = new LinkedHashSet<Integer>();
             prev = next = null;
@@ -121,7 +126,7 @@ public class LFUCache {
         cache.set(0, 1);
         cache.set(1, 2);
         cache.set(2, 3);
-        cache.set(3, 4);
-        cache.set(0, 5);
+        cache.set(1, 4);
+        cache.set(0, 6);
     }
 }

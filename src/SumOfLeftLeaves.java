@@ -18,6 +18,18 @@ public class SumOfLeftLeaves {
         }
     }
 
+    // Find the sum of all left leaves in a given binary tree.
+
+    // Example:
+    //          3
+    //         / \
+    //        9  20
+    //          /  \
+    //        15   7
+
+    // There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
+
+
     // Recursive
     public int sumOfLeftLeaves(TreeNode root) {
         if (root == null)
@@ -48,21 +60,19 @@ public class SumOfLeftLeaves {
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
 
-        while (!stack.empty()){
+        while (!stack.empty()) {
             TreeNode node = stack.pop();
 
-            if (node.left != null){
-                if (node.left.left == null && node.left.right == null){
+            if (node.left != null) {
+                if (node.left.left == null && node.left.right == null) {
                     sum += node.left.val;
                 } else {
                     stack.push(node.left);
                 }
             }
 
-            if (node.right != null){
-                if (node.right.left != null || node.right.right != null){
-                    stack.push(node.right);
-                }
+            if (node.right != null) {
+                stack.push(node.right);
             }
         }
 

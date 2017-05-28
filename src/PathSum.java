@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Created by udingji on 3/14/17.
  */
@@ -29,6 +31,45 @@ public class PathSum {
 
         // Recursive call on the left and right sub tree
         return hasPathSum(root.left,sum - root.val) || hasPathSum(root.right, sum - root.val);
+    }
+
+    public static boolean hasPathSum2(TreeNode root, int sum) {
+
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode prev = null, node = root;
+        int pathSum = 0;
+
+        while (node != null || !stack.empty()){
+            // Push left nodes to the stack
+            while (node != null){
+                stack.push(node);
+                pathSum += node.val;
+                node = node.left;
+            }
+
+            // Peek the top node in the stack
+            node = stack.peek();
+            // If the current node is leaf and the path sum so far equals the target, return true
+            if (node.left == null && node.right == null && pathSum == sum)
+                return true;
+
+            // If the current node has a right child, and we did go upwards from the right
+            // Set right child as the current node for next iteration
+            // Otherwise, set the current node as the previous node,
+            // subtract the value of the current node from the path sum,
+            // pop the current node from the stack
+            // set the current node as null (need to get new node from the stack)
+            if (node.right != null && prev != node.right){
+                node = node.right;
+            } else {
+                prev = node;
+                pathSum -= node.val;
+                stack.pop();
+                node = null;
+            }
+        }
+
+        return false;
     }
 
 }
