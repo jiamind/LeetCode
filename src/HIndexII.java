@@ -3,6 +3,8 @@
  */
 public class HIndexII {
 
+    // Follow up for H-Index: What if the citations array is sorted in ascending order? Could you optimize your algorithm?
+
     public int hIndex(int[] citations) {
 
         if (citations == null || citations.length == 0)
