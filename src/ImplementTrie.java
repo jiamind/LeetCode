@@ -4,6 +4,11 @@
  */
 public class ImplementTrie {
 
+    // Implement a trie with insert, search, and startsWith methods.
+
+    // Note:
+    // You may assume that all inputs are consist of lowercase letters a-z.
+
     // 93.66%! GJ!
     public class Trie {
 

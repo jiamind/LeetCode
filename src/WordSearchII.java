@@ -6,6 +6,21 @@ import java.util.List;
  */
 public class WordSearchII {
 
+    // Given a 2D board and a list of words from the dictionary, find all words in the board.
+
+    // Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+    // For example,
+    // Given words = ["oath","pea","eat","rain"] and board =
+
+    // [
+    //    ['o','a','a','n'],
+    //    ['e','t','a','e'],
+    //    ['i','h','k','r'],
+    //    ['i','f','l','v']
+    // ]
+    // Return ["eat","oath"].
+
     // Idea: use Tire data structure to store all words in the array
     // Iterate through each cell on the board and perform dfs. If we find a word matches the trie, add it to the result list
     public List<String> findWords(char[][] board, String[] words) {

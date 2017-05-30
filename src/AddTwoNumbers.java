@@ -3,6 +3,13 @@
  */
 public class AddTwoNumbers {
 
+    // You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+    // You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+    // Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+    // Output: 7 -> 0 -> 8
+
     private static class ListNode {
         int val;
         ListNode next;
@@ -13,35 +20,31 @@ public class AddTwoNumbers {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // Create result ListNode
-        ListNode result = new ListNode(0);
-        // Create pointer p points to the head of the result ListNode
-        ListNode p = result;
+        // Create dummy ListNode
+        ListNode dummy = new ListNode(0);
+        // Create pointer p points to the head of the dummy ListNode
+        ListNode p = dummy;
+        int sum = 0;
 
         // While any of the ListNode is not null
         while (l1 != null || l2 != null) {
-            // If any ListNode is null, use 0
-            int a = l1 == null ? 0 : l1.val;
-            int b = l2 == null ? 0 : l2.val;
-            // Add two ListNode and the current value of p.
-            // If sum is greater than 10, add the tenth digit to the next p
-            if ((a + b + p.val) >= 10) {
-                p.val += (a + b - 10);
-                p.next = new ListNode(1);
-            } else {
-                p.val += (a + b);
-                // If any of the ListNode is not null and has next, create 0 as the next p
-                if ((l1 != null && l1.next != null) || (l2 != null && l2.next != null))
-                    p.next = new ListNode(0);
+            if (l1 != null){
+                sum += l1.val;
+                l1 = l1.next;
             }
-            // Move p forward
+            if (l2 != null){
+                sum += l2.val;
+                l2 = l2.next;
+            }
+            p.next = new ListNode(sum % 10);
+            sum /= 10;
             p = p.next;
-            // Move l1 and l2 forward if they are not null
-            if (l1 != null) l1 = l1.next;
-            if (l2 != null) l2 = l2.next;
         }
 
-        return result;
+        if (sum != 0)
+            p.next = new ListNode(sum);
+
+        return dummy.next;
     }
 
     public static void main(String[] args) {

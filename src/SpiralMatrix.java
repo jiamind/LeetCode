@@ -24,25 +24,25 @@ public class SpiralMatrix {
                 result.add(matrix[topRow][i]);
             }
             topRow++;
-            if (topRow > bottomRow) break;
 
             for (int i = topRow; i <= bottomRow; i++){
                 result.add(matrix[i][rightColumn]);
             }
             rightColumn--;
-            if (rightColumn < leftColumn) break;
 
-            for (int i = rightColumn; i >= leftColumn; i--){
-                result.add(matrix[bottomRow][i]);
+            if (topRow <= bottomRow) {
+                for (int i = rightColumn; i >= leftColumn; i--) {
+                    result.add(matrix[bottomRow][i]);
+                }
             }
             bottomRow--;
-            if (bottomRow < topRow) break;
 
-            for (int i = bottomRow; i >= topRow; i--){
-                result.add(matrix[i][leftColumn]);
+            if (leftColumn <= rightColumn) {
+                for (int i = bottomRow; i >= topRow; i--) {
+                    result.add(matrix[i][leftColumn]);
+                }
             }
             leftColumn++;
-            if (leftColumn > rightColumn) break;
         }
 
         return result;

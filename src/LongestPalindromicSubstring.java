@@ -3,6 +3,18 @@
  */
 public class LongestPalindromicSubstring {
 
+    // Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+    // Example:
+    // Input: "babad"
+    // Output: "bab"
+
+    // Note: "aba" is also a valid answer.
+
+    // Example:
+    // Input: "cbbd"
+    // Output: "bb"
+
     // Idea: For each character in the string, use two pointers to scan in opposite directions,
     // while the characters that these pointers point to are identical. Note: need to consider if the length of the substring is odd and even
     // Update the max length, the start and end index

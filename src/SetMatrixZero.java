@@ -5,6 +5,9 @@ public class SetMatrixZero {
 
     public static void setZeroes(int[][] matrix) {
 
+        // Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
+
+
         // Idea: use the first row and column of the matrix to store information of whether this row/column contains 0
         // This requires 0(1) in space
 

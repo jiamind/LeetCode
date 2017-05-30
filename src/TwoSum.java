@@ -6,6 +6,10 @@ import java.util.Hashtable;
  */
 public class TwoSum {
 
+    // Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+    // You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
     // Idea: Store the complement (target - number) and the index of each number in a hashmap
     // For each later numbers, if the number is in the hashmap as a complement,
     // we found the pair of numbers that sum up to the target

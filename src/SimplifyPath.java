@@ -6,6 +6,14 @@ import java.util.Stack;
  */
 public class SimplifyPath {
 
+    // Given an absolute path for a file (Unix-style), simplify it.
+
+    // For example,
+    //  path = "/home/", => "/home"
+    //  path = "/a/./b/../../c/", => "/c"
+
+
+    // If String.split() is not allowed
 //    public static String simplifyPath(String path) {
 //        // If the path is empty, return path
 //        if (path.isEmpty()) return path;

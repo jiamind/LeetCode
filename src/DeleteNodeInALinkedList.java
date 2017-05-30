@@ -3,6 +3,10 @@
  */
 public class DeleteNodeInALinkedList {
 
+    // Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.
+
+    // Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node with value 3, the linked list should become 1 -> 2 -> 4 after calling your function.
+
     private class ListNode {
 
         int val;
@@ -19,25 +23,6 @@ public class DeleteNodeInALinkedList {
         node.val = node.next.val;
         node.next = node.next.next;
     }
-
-//    public void deleteNode(ListNode node) {
-//        if (node == null)
-//            return;
-//
-//        ListNode p1 = node;
-//        ListNode p2 = node.next;
-//
-//        while (p2 != null){
-//            p1.val = p2.val;
-//
-//            if (p2.next == null)
-//                p1.next = null;
-//
-//            p1 = p1.next;
-//            p2 = p2.next;
-//        }
-//
-//    }
 
 
 }

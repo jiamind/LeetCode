@@ -3,6 +3,13 @@
  */
 public class RotateImage {
 
+    // You are given an n x n 2D matrix representing an image.
+
+    // Rotate the image by 90 degrees (clockwise).
+
+    // Follow up:
+    // Could you do this in-place?
+
     public static void rotate(int[][] matrix) {
 
         // Get the row size and column size of the matrix (should be the same for a NxN matrix)

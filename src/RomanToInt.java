@@ -6,6 +6,10 @@ import java.util.Map;
  */
 public class RomanToInt {
 
+    // Given a roman numeral, convert it to an integer.
+
+    // Input is guaranteed to be within the range from 1 to 3999.
+
     public static int romanToInt(String s) {
         int res = 0;
         // Scan from the right of s to the left
