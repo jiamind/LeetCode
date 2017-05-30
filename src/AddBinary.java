@@ -3,6 +3,13 @@
  */
 public class AddBinary {
 
+    // Given two binary strings, return their sum (also a binary string).
+
+    // For example,
+    // a = "11"
+    // b = "1"
+    // Return "100".
+
     public static String addBinary(String a, String b) {
 
         StringBuilder sb = new StringBuilder();
@@ -10,30 +17,19 @@ public class AddBinary {
         char[] array1 = a.toCharArray();
         char[] array2 = b.toCharArray();
 
-        // Save any carry over value to the next digit
-        int carryOver = 0;
-        int i = 0;
-        // Iterate through two arrays until we reach both ends
-        while (i < array1.length || i < array2.length){
-            // Get the numbers at the current index (starting from the end) in two arrays
-            int i1 = i >= array1.length ? 0 : array1[array1.length-1-i] - '0';
-            int i2 = i >= array2.length ? 0 : array2[array2.length-1-i] - '0';
+        int sum = 0, i = 0;
+        while ( i < array1.length || i < array2.length){
+            sum += i >= array1.length ? 0 : array1[array1.length - 1 - i] - '0';
+            sum += i >= array2.length ? 0 : array2[array2.length - 1 - i] - '0';
 
-            // Add them together with any carryover and append the number in the string builder. If the sum exceeds 1, sum - 1 and set carryOver to 1
-            if (i1+i2+carryOver >= 2){
-                sb.append(i1+i2+carryOver-2);
-                carryOver = 1;
-            }else {
-                sb.append(i1+i2+carryOver);
-                carryOver = 0;
-            }
+            sb.append(sum%2);
+            sum /= 2;
             i++;
         }
 
-        // If there's still carryover after we reach the head, add the carryover
-        if (carryOver == 1){
-            sb.append(1);
-        }
+        if (sum != 0)
+            sb.append(sum);
+
         // Reverse the string builder and return result
         return sb.reverse().toString();
     }

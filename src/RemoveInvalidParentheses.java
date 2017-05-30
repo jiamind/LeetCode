@@ -10,6 +10,15 @@ import java.util.Stack;
  */
 public class RemoveInvalidParentheses {
 
+    // Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
+
+    // Note: The input string may contain letters other than the parentheses ( and ).
+
+    // Examples:
+    //     "()())()" -> ["()()()", "(())()"]
+    //     "(a)())()" -> ["(a)()()", "(a())()"]
+    //     ")(" -> [""]
+
     // Idea: remove one left or right parentheses at a time, add it into a queue and repeat the process, until we found valid parentheses string
     // Then we stop removing parentheses (adding string to the queue) since we need to remove minimum number of parentheses
     public static List<String> removeInvalidParentheses(String s) {
