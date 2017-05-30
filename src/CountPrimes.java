@@ -3,6 +3,8 @@
  */
 public class CountPrimes {
 
+    // Count the number of prime numbers less than a non-negative number, n.
+
     // Idea: create an array of size n. Starting from 2 (which is a prime number), all numbers which is a multiply of this number are not prime number
     public int countPrimes(int n) {
         boolean[] isNotPrime = new boolean[n];

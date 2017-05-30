@@ -14,6 +14,9 @@ public class AddDigits {
 
 
     //Idea: congruence formula: https://en.wikipedia.org/wiki/Digital_root#Congruence_formula
+    // If n <= 9, d(n) = n
+    // If n > 9 && n % 9 != 0, d(n) = n % 9
+    // If n > 9 && n % 9 == 0, d(n) = 9
     public int addDigits(int num) {
         return 1 + (num - 1) % 9;
     }

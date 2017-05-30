@@ -5,6 +5,8 @@ import java.util.HashMap;
  */
 public class ConstructBinaryTreeFromInorderandPostorderTraversal {
 
+    // Given inorder and postorder traversal of a tree, construct the binary tree.
+
     private static class TreeNode {
 
         int val;

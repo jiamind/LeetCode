@@ -3,6 +3,19 @@
  */
 public class DecodeWays {
 
+    // A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+    //        'A' -> 1
+    //        'B' -> 2
+    //        ...
+    //        'Z' -> 26
+    // Given an encoded message containing digits, determine the total number of ways to decode it.
+
+    // For example,
+    // Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
+
+    // The number of ways decoding "12" is 2.
+
     // Idea: Use dynamic programming.
     // Create a dp array. dp[0] means number of ways to decode when there is no string. dp[n] means number of ways to decode at n-1 index in the string
     // Iterate through each character in the array, we evaluate the number of ways to decode at this index by treating this character as a single digit,

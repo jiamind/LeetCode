@@ -5,6 +5,18 @@ import java.util.*;
  */
 public class ThreeSum {
 
+    // Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+    // Note: The solution set must not contain duplicate triplets.
+
+    //For example, given array S = [-1, 0, 1, 2, -1, -4],
+
+    //A solution set is:
+    // [
+    //   [-1, 0, 1],
+    //   [-1, -1, 2]
+    // ]
+
     // Idea: Use three pointers, index, left and right.
     // The index pointer iterate through the array (till the two elements before the end, since the last two elements are for the left and right pointer)
     // The left pointer starts at the position to the right of index, right pointer starts at the end of the array

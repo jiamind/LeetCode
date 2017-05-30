@@ -3,6 +3,9 @@
  */
 public class ImplementStrStr {
 
+    // Implement strStr().
+    // Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
     // Idea: use two pointers i and j, i is the offset in haystack string, j is the index in needle string.
     // i + j is the index in haystack string
     // While incrementing i (offset), compare character at each j index in the needle string with i + j index in the haystack string

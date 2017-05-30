@@ -5,6 +5,14 @@ import java.util.HashMap;
  */
 public class FirstUniqueCharacterInAString {
 
+    // Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
+
+    // Examples:
+    // s = "leetcode"
+    // return 0.
+    // s = "loveleetcode",
+    // return 2.
+
     public int firstUniqChar(String s) {
         HashMap<Character,Integer> map = new HashMap<>();
 

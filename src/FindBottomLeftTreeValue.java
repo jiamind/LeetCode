@@ -6,6 +6,28 @@ import java.util.Queue;
  */
 public class FindBottomLeftTreeValue {
 
+    // Given a binary tree, find the leftmost value in the last row of the tree.
+
+    // Example 1:
+    // Input:
+    //     2
+    //    / \
+    //   1   3
+
+    // Output: 1
+
+    // Example 2:
+    // Input:
+    //        1
+    //       / \
+    //      2   3
+    //     /   / \
+    //    4   5   6
+    //       /
+    //      7
+
+    // Output: 7
+
     private class TreeNode {
         int val;
         TreeNode left;
