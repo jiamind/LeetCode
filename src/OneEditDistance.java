@@ -3,6 +3,9 @@
  */
 public class OneEditDistance {
 
+    // Given two strings S and T, determine if they are both one edit distance apart.
+
+
     // Idea: Iterate through the string (with the minimum characters). If we find different characters at the same index:
     // 1) two strings have the same length. Then we replace this character. Therefore, all other characters have to be the same in these two strings
     // 2) s string is longer than t string. Then we delete this character in s string. Therefore, all other characters have to be the same in these two strings

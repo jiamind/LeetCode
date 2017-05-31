@@ -63,6 +63,45 @@ public class WordLadder {
         return 0;
     }
 
+    // Idea: two ended bfs
+    public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
+        HashSet<String> beginSet = new HashSet<>(), endSet = new HashSet<>();
+        beginSet.add(beginWord);
+        endSet.add(endWord);
+        HashSet<String> visited = new HashSet<>();
+        int len = 1;
+
+        while (!beginSet.isEmpty() || !endSet.isEmpty()){
+            HashSet<String> level = new HashSet<>();
+            if (beginSet.size() > endSet.size()){
+                HashSet<String> s = beginSet;
+                beginSet = endSet;
+                endSet = s;
+            }
+
+            for (String str : beginSet){
+                for (int i = 0; i < str.length(); i++){
+                    char[] array = str.toCharArray();
+                    for (char j = 'a'; j <= 'z'; j++){
+                        array[i] = j;
+                        String newString = new String(array);
+                        if (endSet.contains(newString)){
+                            return len + 1;
+                        }
+                        if (!visited.contains(newString) && wordList.contains(newString)){
+                            visited.add(newString);
+                            level.add(newString);
+                        }
+                    }
+                }
+            }
+            len ++;
+            beginSet = level;
+        }
+
+        return 0;
+    }
+
     public static void main(String[] args) {
         //        String beginWord = "hit";
         //        String endWord = "cog";

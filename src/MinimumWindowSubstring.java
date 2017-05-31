@@ -3,6 +3,18 @@
  */
 public class MinimumWindowSubstring {
 
+    // Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+
+    // For example,
+    //        S = "ADOBECODEBANC"
+    ///T = "ABC"
+    // Minimum window is "BANC".
+
+    // Note:
+    // If there is no such window in S that covers all characters in T, return the empty string "".
+    // If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
+
+
     // Idea: create an integer array, map each character in t to the array, with the number of times it appears as its value
     // Use two pointers marking the head and end of the sliding window, both initially point to the head
     // Move the end pointer first, for each scanned character, reduce its value in the map.
@@ -34,8 +46,7 @@ public class MinimumWindowSubstring {
 
                 }
 
-                map[sArray[start]]++;
-                if (map[sArray[start]] > 0)
+                if (++map[sArray[start]] > 0)
                     counter++;
                 start++;
             }
