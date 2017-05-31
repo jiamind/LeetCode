@@ -26,7 +26,7 @@ public class MeetingRoomsII {
 
     // Example:
     // Given [[0, 30],[5, 10],[15, 20]],
-    //   return 2.
+    // return 2.
 
     // Idea: sort the intervals base on start time. Add the end time of the first interval to the queue
     // Iterate through the intervals, if the start time is before the earliest ending in the queue, we need a new meeting room.

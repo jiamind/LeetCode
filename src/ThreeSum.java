@@ -45,7 +45,7 @@ public class ThreeSum {
         // index->    left->               <-right
         //   1          2    3   4   5   6     7
         int index = 0, left = 1, right = nums.length - 1;
-        while (index < nums.length - 2 && nums[index] <= 0){
+        while (index < nums.length - 2){
             while (left<right){
                 // Calculate the sum
                 int sum = nums[left] + nums[index] + nums[right];

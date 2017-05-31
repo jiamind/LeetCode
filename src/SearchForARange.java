@@ -18,10 +18,8 @@ public class SearchForARange {
         int left = 0, right = nums.length;
 
         while (left < right){
-            int mid = (left + right) / 2;
-            // If the target is greater than the number at mid, bring up the left pointer to mid + 1
-            // Attention: mid can be lower than actual number since it's integer type.
-            // We can't set left = mid if we want to bring up the lower bar
+            int mid = left + (right - left) / 2;
+
             if (target > nums[mid]){
                 left = mid + 1;
             }else {
