@@ -8,6 +8,17 @@ import java.util.List;
  */
 public class GroupAnagrams {
 
+    // Given an array of strings, group anagrams together.
+
+    // For example, given: ["eat", "tea", "tan", "ate", "nat", "bat"],
+    // Return:
+
+    //  [
+    //   ["ate", "eat","tea"],
+    //   ["nat","tan"],
+    //   ["bat"]
+    //  ]
+
     public static List<List<String>> groupAnagrams(String[] strs) {
 
         List<List<String>> result = new ArrayList<>();

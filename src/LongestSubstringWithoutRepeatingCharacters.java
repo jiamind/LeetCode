@@ -22,7 +22,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
         HashMap<Character,Integer> hashMap = new HashMap<>();
         // Iterate through each character in the string
         for (;j < array.length; j++) {
-            // If the current character is already in the hashmap, update the start pointer points to the right of the current character
+            // If the current character is already in the hashmap, update the start pointer points to the right of the last occurrence of the current character
             if (hashMap.containsKey(array[j])){
                 // Note: i cannot go backward (smaller).
                 i = Math.max(i,hashMap.get(array[j])+1);
