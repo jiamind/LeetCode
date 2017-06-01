@@ -26,9 +26,62 @@ public class ImplementStrStr {
         }
     }
 
+    // Idea: use rolling hash
+    public static int strStr2(String haystack, String needle) {
+        if (haystack == null || needle == null)
+            return -1;
+
+        if (needle.length() == 0)
+            return 0;
+
+        if (haystack.length() < needle.length())
+            return -1;
+
+        char[] hArray = haystack.toCharArray();
+        char[] nArray = needle.toCharArray();
+
+        int currentHHash = 0, nHash = 0;
+        for (int i = 0; i < nArray.length; i++){
+            currentHHash += new Character(hArray[i]).hashCode();
+        }
+        for (int i = 0; i < nArray.length; i++){
+            nHash += new Character(nArray[i]).hashCode();
+        }
+
+        if (currentHHash == nHash){
+            if (containsSubstring(hArray,nArray,0))
+                return 0;
+        }
+
+        for (int i = 0; i < hArray.length - nArray.length; i++){
+            currentHHash -= new Character(hArray[i]).hashCode();
+            currentHHash += new Character(hArray[i + nArray.length]).hashCode();
+
+            if (currentHHash == nHash){
+                if (containsSubstring(hArray,nArray,i+1)){
+                    return i + 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+
+    private static boolean containsSubstring(char[] haystack, char[] needle, int index) {
+        int i = index, j = 0;
+        while (i < haystack.length && j < needle.length){
+            if (haystack[i] != needle[j])
+                return false;
+            i++;
+            j++;
+        }
+        return j == needle.length;
+    }
+
     public static void main(String[] args) {
-        String haystack = "ac";
+        String haystack = "aceabd";
         String needle = "ab";
-        System.out.println(strStr(haystack,needle));
+        System.out.println(strStr2(haystack,needle));
     }
 }
