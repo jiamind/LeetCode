@@ -13,7 +13,7 @@ public class CountPrimes {
         for (int i = 2; i < n; i++){
             if (!isNotPrime[i]){
                 count++;
-                for (int j = 2; i * j <= n; j++){
+                for (int j = 2; i * j < n; j++){
                     isNotPrime[i*j] = true;
                 }
             }
