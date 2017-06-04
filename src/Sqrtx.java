@@ -6,6 +6,9 @@ public class Sqrtx {
 
     public static int mySqrt(int x) {
 
+        // Implement int sqrt(int x).
+        // Compute and return the square root of x.
+
         // If x is 0, return 0; If x is 1, return 1
         // Prevent divided by 0 error later
         // (Alternatively without these, we can set right to Integer.Max_value)
@@ -15,7 +18,7 @@ public class Sqrtx {
         int left = 0, right = x;
 
         // While two pointers don't meet
-        while (right > left){
+        while (left < right){
             // Find the mid number. Pay attention to prevent from over-floating
             // Attention: mid can be lower than actual number since it's integer type.
             // We can't set left = mid if we want to bring up the lower bar

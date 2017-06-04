@@ -5,6 +5,16 @@ import java.util.Stack;
  */
 public class MaximalRectangle {
 
+    // Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+
+    // For example, given the following matrix:
+
+    //        1 0 1 0 0
+    //        1 0 1 1 1
+    //        1 1 1 1 1
+    //        1 0 0 1 0
+    // Return 6.
+
     // Idea: scan from the first row to the last row. Use an array to keep track of the height at each index at each row.
     // Find the max area at each row
     public int maximalRectangle(char[][] matrix) {

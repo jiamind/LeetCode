@@ -7,7 +7,7 @@ public class DivideTwoIntegers {
         // If the divisor is 1, return the dividend itself
         if (divisor == 1) return dividend;
         // If the divisor is -1, and the dividend is min integer, the result will overflow. Return the max integer
-        // Overwise, return the negative of dividend
+        // Otherwise, return the negative of dividend
         if (divisor == -1) return dividend == Integer.MIN_VALUE ? Integer.MAX_VALUE : -dividend;
 
         // Make dividend and divisor both negative since negative has broader range
